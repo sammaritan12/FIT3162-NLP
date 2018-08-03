@@ -2,12 +2,8 @@
 I'm a Final Year Get Me Out of Here
 
 # TO INSTALL
-
-## NLTK
-pip install -U nltk numpy
-
-## SCI-KIT LEARN
-pip install -U numpy scipy scikit-learn
+## SCI-KIT LEARN and NLTK
+pip install -U numpy scipy scikit-learn nltk
 
 # TO TEST
 Go to Python interpreter and type:
