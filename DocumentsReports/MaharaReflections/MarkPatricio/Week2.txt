@@ -1,0 +1,7 @@
+This week during the lab we were discussing with Jojo on what was left to be done and what we have done during the week.
+
+She was really helpful with showing us to NLTK as we had originally planned to create our own feature extraction algorithms, which while interesting would probably have taken a really long time to implement and would be reinventing the wheel as such.
+
+She did help us with the organisation of our project as to what is needed to be done by now as well as what kind of effort that needs to be done by the time we present in a few weeks, possibly during week 5 so we have a lot of tasks that need to be done yet.
+
+The hardest part is probably starting due to the fact that it is such a gigantic task that both parties are hesitant to start. Once started however, I am confident we will get the ball rolling and get a lot done.
