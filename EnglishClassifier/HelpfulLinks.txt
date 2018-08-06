@@ -1,0 +1,11 @@
+NLTK:
+NLTK Video Playlist by sentdex: https://www.youtube.com/watch?v=FLZvOKSCkxY&list=PLQVvvaa0QuDf2JswnfiGkliBInZnIC4HL
+
+nltk + sklearn learn: https://pythonprogramming.net/sklearn-scikit-learn-nltk-tutorial/
+
+SciKit Learn:
+sklearn video playlist by sentdex: https://www.youtube.com/watch?v=URTZ2jKCgBc&list=PLQVvvaa0QuDd0flgGphKCej-9jp-QdzZ3
+
+preparing data article: https://machinelearningmastery.com/prepare-data-machine-learning-python-scikit-learn/
+
+sklearn documentation feature extraction: http://scikit-learn.org/stable/modules/feature_extraction.html
