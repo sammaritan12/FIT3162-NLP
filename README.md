@@ -27,14 +27,14 @@ Then download all, or as necessary.
 # TO TEST
 Go to Python interpreter and type:
 
-`import numpy, scipy, nltk, sklearn`
+```import numpy, scipy, nltk, sklearn```
 
 # TO RUN
 
 1. Run the ClassifierProcess.py file first to initially train classifier, arguments is english, spanish or both
 
-    `python ClassifierProcess.py english|spanish|both`
+    ```python ClassifierProcess.py english|spanish|both```
 
 2. Run the main.py file with text file as argument to be processed, as well as language
 
-    `python main.py file.txt english|spanish`
+    ```python main.py file.txt english|spanish```
