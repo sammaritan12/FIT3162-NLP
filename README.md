@@ -6,7 +6,9 @@ Python 3.x must be used
 If using system with Python 2.x and Python 3.x use `python3` command instead of `python`
 
 ## SCI-KIT LEARN and NLTK
-`pip install -U numpy scipy scikit-learn nltk`
+```
+pip install -U numpy scipy scikit-learn nltk
+```
 
 If you are using a unix system, use `pip3` command
 
@@ -27,7 +29,9 @@ Then download all, or as necessary.
 # TO TEST
 Go to Python interpreter and type:
 
-```import numpy, scipy, nltk, sklearn```
+```
+import numpy, scipy, nltk, sklearn
+```
 
 # TO RUN
 
