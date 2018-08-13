@@ -34,7 +34,8 @@ import numpy, scipy, nltk, sklearn
 ```
 
 # TO RUN
-
+0. Check `config.py` for options to fine-grain classifier options
+   
 1. Run the ClassifierProcess.py file first to initially train classifier, arguments is english, spanish or both
 
     ```

@@ -1,32 +1,31 @@
 from nltk import sent_tokenize, word_tokenize, FreqDist
 from os import listdir
 from os.path import isfile, join
+from math import ceil
 
 # Assumptions:
 # - clean preprocessed data is a text file containing text only
 # - extraction will be done using NLTK
 
 ### FREQDIST AUXILIARY FUNCTIONS ###
-# [x] Merge multiple frequency distributions, and grab n most common items
+# [x] Merge multiple frequency distributions
 
-def most_common(freqDists, n):
+def merge_freqs(freqDists):
     """
-    Create FreqDist from list of FreqDist which contain n most common words
+    Merge multiple frequency lists together
     - freqDists is represented as [FreqDist, FreqDist, ... , FreqDist]
-    - n is most common character
     """
     mergedFreqs = FreqDist()
     if len(freqDists) > 1:
         for i in range(len(freqDists)):
             mergedFreqs += freqDists[i]
             
-    return mergedFreqs.most_common(n)
-
+    return mergedFreqs
 
 ### NGRAM FEATURE EXTRACTION ###
 # [x] Create ngram from list of words
-# [] Find n most common ngrams from entire corpus
-# [] Select n most common ngrams that occur in each text
+# [x] Find n most common ngrams from entire corpus
+# [x] Select n most common ngrams that occur in each text
 
 def char_ngram(length, words):
     """
@@ -46,6 +45,32 @@ def char_ngram(length, words):
                 ngrams.append(i[j - length + 1: j + 1])
     return ngrams
 
+def ngram_selection(text_distributions, n):
+    # merge distributions
+    merged_dist = merge_freqs(text_distributions)
+
+    # intialise word count list and words
+    words = []
+    word_counts = [[] for _ in range(n)]
+
+    # get top n words, or size if n > length of merged_dist
+    top_n_words = merged_dist.most_common(min(ceil(n), len(merged_dist)))
+
+    # Append words and word counts to their lists
+    for i in range(n):
+        for t in range(len(text_distributions)):
+            if text_distributions[t][top_n_words[i][0]]:
+                word_counts[t].append(text_distributions[t][ top_n_words[i][0] ])
+            else:
+                word_counts[t].append(0)
+        words.append(top_n_words[i][0])
+
+    return words, word_counts
+
+def ngram_test_selection(distribution, words):
+    return [distribution[w] for w in words]
+
+
 ### FREQUENCY DISTRIBUTION FEATURES ###
 # [x] Average sentence length
 # [] Punctuation frequency distribution
@@ -54,18 +79,7 @@ def char_ngram(length, words):
 
 # TODO punctuation feature extraction
 
-# TODO POS tagging
-
-# TODO POS frequency distribution
-
-### PUTTING IT ALL TOGETHER ###
-# Join features such that there consists 2 lists, x, y
-# x: [Text Features A, Text Features B, ... , Text Features C]
-# Text Features: [Average Sentence Length, 
-#                 Punctuation 1 Freq, ... , Punctuation 14 Freq,
-#                 POS 1 Freq, ... , POS 8 Freq,
-#                 Most Common N-Gram Freq, ... , 1000th Most Common N-Gram Freq]
-# y: [Author A, Author B, ... , Author C]
+# TODO POS tagging and freq distribution
 
 def avg_sentence_length(text):
     """
@@ -76,3 +90,4 @@ def avg_sentence_length(text):
     words = word_tokenize(text)
 
     return len(words) / len(sentences)
+

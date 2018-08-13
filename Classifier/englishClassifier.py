@@ -29,7 +29,7 @@ def textVectorizer(texts):
 
 
 ### CLASSIFICATION ###
-# [] English Classifier
+# [x] English Classifier
 # [] Tweak English Classifier for highest accuracy
 # [] Spanish Classifier
 # [] Tweak Spanish Classifier for highest accuracy
