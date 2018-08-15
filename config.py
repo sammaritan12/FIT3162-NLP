@@ -4,3 +4,4 @@ ngram_common_words = 5  # how many of the most common ngrams to choose as featur
 normalization_type = 'l1' # approacah for normalisation
     # L1 Least Absolute Deviations, abs(sum of row) = 1, insensitive to outliers
     # L2 Least Squares, sum of squares, on each row = 1, takes outliers into consideration
+processed_text_path = '.\ProcessedTexts'

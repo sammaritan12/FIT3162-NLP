@@ -51,7 +51,7 @@ def ngram_selection(text_distributions, n):
 
     # intialise word count list and words
     words = []
-    word_counts = [[] for _ in range(n)]
+    word_counts = [[] for _ in range(len(text_distributions))]
 
     # get top n words, or size if n > length of merged_dist
     top_n_words = merged_dist.most_common(min(ceil(n), len(merged_dist)))
