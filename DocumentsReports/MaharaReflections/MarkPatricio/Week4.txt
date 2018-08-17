@@ -1,0 +1,6 @@
+This week during week 4, we made a pretty big leap with the character ngrams so that they were created and could be processed in the machine learning model.
+Furthermore, we created a simple model using LinearSVC and character ngrams only, on the surface it seems to work quite nicely however more testing is needed.
+
+Jojo told us the character ngrams may not actually be useful at all - so that we should be looking into how to use the word ngrams, especially with colocations. I was a bit annoyed becuase we made it clear to jojo weeks ago that we were using character ngrams, and the only time she mentioned to not use them is when we had already create the ngrams and made a simple model out of it.
+
+Overall, I'm feeling okay with this week, we have the foundations down so the rest is just adding on to what we have created.
