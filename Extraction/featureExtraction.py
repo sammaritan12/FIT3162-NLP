@@ -45,6 +45,24 @@ def char_ngram(length, words):
                 ngrams.append(i[j - length + 1: j + 1])
     return ngrams
 
+def word_ngram(length, words):
+    """
+    Given a list of strings, convert to word ngrams, where length is length of ngram
+    - words is represented as [a, b, ..., c.]
+    - where a, b, c are whole words
+    - length is the length of the word n-gram required
+    """
+    ngrams = []
+    # if words is less than or equal to length, it is already an n-gram
+    if len(words) <= length:
+        ngrams.append(" ".join(words))
+    else:
+        # else, split into n-grams for length words
+        for i in range(length - 1, len(words)):
+            ngrams.append(" ".join(words[i - length + 1: i + 1]))
+    return ngrams
+
+
 def ngram_selection(text_distributions, n):
     # merge distributions
     merged_dist = merge_freqs(text_distributions)
