@@ -30,8 +30,12 @@ if __name__ == "__main__":
         eng_classifier = pickle.load(fid)
 
     # loads words used in ngrams
-    with open('eng_training_words.pkl', 'rb') as fid:
-        training_words = pickle.load(fid)
+    with open('eng_training_char_ngrams.pkl', 'rb') as fid:
+        training_char_ngrams = pickle.load(fid)
+
+    # loads words used in ngrams
+    with open('eng_training_word_ngrams.pkl', 'rb') as fid:
+        training_word_ngrams = pickle.load(fid)
 
     # # Exactly the same as Text A in training data
     # text = '''There were a king with a large jaw and a queen with a plain face, on the
@@ -43,7 +47,21 @@ if __name__ == "__main__":
     # TODO process text file to feature set
 
     # ngram feature set extraction
-    test_feature_set = ngram_test_selection(FreqDist(char_ngram(config.ngram_length, word_tokenize(text))), training_words)
+    tokenized_word = word_tokenize(text)
+
+    # character ngrams
+    char_ngrams_feature_set = freqdist_test_selection(FreqDist(char_ngram(config.char_ngram_length, tokenized_word)), training_char_ngrams)
+
+    # word ngrams
+    word_ngrams_feature_set = freqdist_test_selection(FreqDist(word_ngram(config.word_ngram_length, tokenized_word)), training_word_ngrams)
+
+    # Average sentence length
+    avg_sentence_length_feature_set = avg_sentence_length(text)
+
+    # Aggregated feature set
+    test_feature_set = char_ngrams_feature_set + word_ngrams_feature_set + [avg_sentence_length_feature_set]
+
+    
 
     # normalise feature set
     # L1 Least Absolute Deviations, abs(sum of row) = 1, insensitive to outliers

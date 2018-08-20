@@ -10,7 +10,7 @@ from math import ceil
 ### FREQDIST AUXILIARY FUNCTIONS ###
 # [x] Merge multiple frequency distributions
 
-def merge_freqs(freqDists):
+def merge_freqdists(freqDists):
     """
     Merge multiple frequency lists together
     - freqDists is represented as [FreqDist, FreqDist, ... , FreqDist]
@@ -21,6 +21,34 @@ def merge_freqs(freqDists):
             mergedFreqs += freqDists[i]
             
     return mergedFreqs
+
+def freqdist_selection(text_distributions, n):
+    # merge distributions
+    merged_dist = merge_freqdists(text_distributions)
+
+    # intialise item count list and items
+    items = []
+    item_counts = [[] for _ in range(len(text_distributions))]
+
+    # get top n words, or size if n > length of merged_dist
+    top_n_items = merged_dist.most_common(min(ceil(n), len(merged_dist)))
+
+    # Append words and word counts to their lists
+    for i in range(n):
+        for t in range(len(text_distributions)):
+            if text_distributions[t][top_n_items[i][0]]:
+                item_counts[t].append(text_distributions[t][ top_n_items[i][0] ])
+            else:
+                item_counts[t].append(0)
+        items.append(top_n_items[i][0])
+
+    return items, item_counts
+
+def freqdist_test_selection(distribution, items):
+    """
+    Selects item counts from distribution and places into a simple list
+    """
+    return [distribution[i] for i in items]
 
 ### NGRAM FEATURE EXTRACTION ###
 # [x] Create ngram from list of words
@@ -61,33 +89,6 @@ def word_ngram(length, words):
         for i in range(length - 1, len(words)):
             ngrams.append(" ".join(words[i - length + 1: i + 1]))
     return ngrams
-
-
-def ngram_selection(text_distributions, n):
-    # merge distributions
-    merged_dist = merge_freqs(text_distributions)
-
-    # intialise word count list and words
-    words = []
-    word_counts = [[] for _ in range(len(text_distributions))]
-
-    # get top n words, or size if n > length of merged_dist
-    top_n_words = merged_dist.most_common(min(ceil(n), len(merged_dist)))
-
-    # Append words and word counts to their lists
-    for i in range(n):
-        for t in range(len(text_distributions)):
-            if text_distributions[t][top_n_words[i][0]]:
-                word_counts[t].append(text_distributions[t][ top_n_words[i][0] ])
-            else:
-                word_counts[t].append(0)
-        words.append(top_n_words[i][0])
-
-    return words, word_counts
-
-def ngram_test_selection(distribution, words):
-    return [distribution[w] for w in words]
-
 
 ### FREQUENCY DISTRIBUTION FEATURES ###
 # [x] Average sentence length
