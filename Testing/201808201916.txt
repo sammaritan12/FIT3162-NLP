@@ -1,0 +1,92 @@
+Average sentence length function, change to import word tokens instead of doing same work over and over again
+
+PS C:\Users\markp\Documents\GitHub\FIT3162-NLP> python .\ClassifierProcess.py
+C:\Users\markp\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sklearn\feature_extraction\text.py:17: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working  from collections import Mapping, defaultdictText Import and Author Extraction Time: 0.21342897415161133Word Tokenization Time: 29.499160051345825
+Character Ngrams Time: 9.156513929367065
+Word Ngrams Time: 9.921440362930298
+Average Sentence Length Time: 37.05595254898071
+Zipping Features Time: 0.0
+[17.263775676556897, 4939, 4467, 5483, 2625, 2388, 1662, 2642, 2269, 1536, 1086, 7, 0,
+807, 832, 1316, 919, 736, 3424, 528, 806, 333, 580, 858, 479, 510, 717, 147, 569, 228,
+219, 414, 420, 314, 498, 487, 467, 229, 727, 521, 354, 139, 430, 367, 138, 230, 281, 400, 804, 560, 345, 460, 272, 651, 300, 282, 258, 138, 332, 177, 283, 286, 510, 222, 296, 269, 166, 190, 267, 266, 171, 172, 362, 310, 241, 68, 228, 67, 251, 195, 200, 207, 107, 181, 206, 220, 271, 249, 157, 175, 137, 259, 226, 353, 218, 315, 134, 285, 150, 118,151, 525, 555, 0, 573, 0, 530, 0, 301, 0, 245, 146, 274, 0, 121, 382, 147, 161, 190, 16PS C:\Users\markp\Documents\GitHub\FIT3162-NLP> python .\ClassifierProcess.pys.py                                                                     s\sklearn\featC:\Users\markp\AppData\Local\Programs\Python\Python37-32\lib\site-packages from 'collecs\sklearn\feature_extraction\text.py:17: DeprecationWarning: Using or impl stop workingorting the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
+  from collections import Mapping, defaultdict
+Text Import and Author Extraction Time: 0.2713603973388672
+Word Tokenization Time: 42.80425024032593
+Character Ngrams Time: 10.24454927444458
+Word Ngrams Time: 11.112794399261475
+Traceback (most recent call last):
+  File ".\ClassifierProcess.py", line 69, in <module>    avg_sentence_length_feature_set = [avg_sentence_length(i, tokenized_words[i]) for i in range(len(processed_texts))]
+  File ".\ClassifierProcess.py", line 69, in <listcomp>    avg_sentence_length_feature_set = [avg_sentence_length(i, tokenized_words[i]) for i in range(len(processed_texts))]
+  File "C:\Users\markp\Documents\GitHub\FIT3162-NLP\Extraction\featureExtraction.py", line 108, in avg_sentence_length
+    sentences = sent_tokenize(text)
+  File "C:\Users\markp\AppData\Local\Programs\Python\Python37-32\lib\site-packages\nltk\tokenize\__init__.py", line 95, in sent_tokenize
+    return tokenizer.tokenize(text)
+  File "C:\Users\markp\AppData\Local\Programs\Python\Python37-32\lib\site-packages\nltk\tokenize\punkt.py", line 1241, in tokenize
+    return list(self.sentences_from_text(text, realign_boundaries))
+  File "C:\Users\markp\AppData\Local\Programs\Python\Python37-32\lib\site-packages\nltk\tokenize\punkt.py", line 1291, in sentences_from_text
+    return [text[s:e] for s, e in self.span_tokenize(text, realign_boundaries)]
+  File "C:\Users\markp\AppData\Local\Programs\Python\Python37-32\lib\site-packages\nltk\tokenize\punkt.py", line 1291, in <listcomp>
+    return [text[s:e] for s, e in self.span_tokenize(text, realign_boundaries)]
+  File "C:\Users\markp\AppData\Local\Programs\Python\Python37-32\lib\site-packages\nltk\tokenize\punkt.py", line 1281, in span_tokenize
+    for sl in slices:
+  File "C:\Users\markp\AppData\Local\Programs\Python\Python37-32\lib\site-packages\nltk\tokenize\punkt.py", line 1322, in _realign_boundaries
+    for sl1, sl2 in _pair_iter(slices):
+  File "C:\Users\markp\AppData\Local\Programs\Python\Python37-32\lib\site-packages\nltk\tokenize\punkt.py", line 313, in _pair_iter
+    prev = next(it)
+  File "C:\Users\markp\AppData\Local\Programs\Python\Python37-32\lib\site-packages\nltk\tokenize\punkt.py", line 1295, in _slices_from_text
+    for match in self._lang_vars.period_context_re().finditer(text):
+TypeError: expected string or bytes-like object
+PS C:\Users\markp\Documents\GitHub\FIT3162-NLP> python .\ClassifierProcess.pyC:\Users\markp\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sklearn\feature_extraction\text.py:17: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and
+in 3.8 it will stop working
+  from collections import Mapping, defaultdict
+Text Import and Author Extraction Time: 0.2129831314086914
+Word Tokenization Time: 49.66441011428833
+Character Ngrams Time: 16.813929080963135
+Word Ngrams Time: 17.338648080825806
+Average Sentence Length Time: 12.990665197372437
+Zipping Features Time: 0.0
+Normalization Time: 0.0
+*
+optimization finished, #iter = 10
+obj = -19.997594, rho = 0.000073
+nSV = 20, nBSV = 20
+*
+optimization finished, #iter = 10
+obj = -19.998035, rho = -0.000001
+nSV = 20, nBSV = 20
+*
+optimization finished, #iter = 10
+obj = -19.998620, rho = -0.000025
+nSV = 20, nBSV = 20
+*
+optimization finished, #iter = 10
+obj = -19.999175, rho = -0.000008
+nSV = 20, nBSV = 20
+*
+optimization finished, #iter = 10
+obj = -19.998860, rho = -0.000071
+nSV = 20, nBSV = 20
+*
+optimization finished, #iter = 10
+obj = -19.998637, rho = -0.000057
+nSV = 20, nBSV = 20
+*
+optimization finished, #iter = 10
+obj = -19.998141, rho = 0.000001
+nSV = 20, nBSV = 20
+*
+optimization finished, #iter = 10
+obj = -19.998405, rho = -0.000013
+nSV = 20, nBSV = 20
+*
+optimization finished, #iter = 10
+obj = -19.998500, rho = -0.000004
+nSV = 20, nBSV = 20
+*
+optimization finished, #iter = 10
+obj = -19.999461, rho = 0.000065
+nSV = 20, nBSV = 20
+Total nSV = 50
+[LibSVM]Classifier Fit Time: 0.007704019546508789
+Classifier Successfully Created and Saved.
+PS C:\Users\markp\Documents\GitHub\FIT3162-NLP>

@@ -17,25 +17,41 @@ if __name__ == "__main__":
     if len(argv) < 2:
         print("Please enter a gutenberg file to analyse")
         quit()
-    
+
     # Second argument is language, if empty use English
-    if len(argv) > 3 and argv[2].lower() == 'spanish':
-        language = False
+    if len(argv) > 2 and argv[2].lower()[:2] == 'sp':
+        english = False
+    elif len(argv) > 2 and argv[2].lower()[:2] == 'en':
+        pass
+    else:
+        print("Please choose a valid language, spanish or english")
 
     # process text file to string
     text = filename_to_text(argv[1])
 
-    # loads classifer
-    with open('eng_classifier.pkl', 'rb') as fid:
-        eng_classifier = pickle.load(fid)
+    if english:
+        # loads classifer
+        with open('eng_classifier.pkl', 'rb') as fid:
+            classifier = pickle.load(fid)
 
-    # loads words used in ngrams
-    with open('eng_training_char_ngrams.pkl', 'rb') as fid:
-        training_char_ngrams = pickle.load(fid)
+        # loads words used in ngrams
+        with open('eng_training_char_ngrams.pkl', 'rb') as fid:
+            training_char_ngrams = pickle.load(fid)
 
-    # loads words used in ngrams
-    with open('eng_training_word_ngrams.pkl', 'rb') as fid:
-        training_word_ngrams = pickle.load(fid)
+        # loads words used in ngrams
+        with open('eng_training_word_ngrams.pkl', 'rb') as fid:
+            training_word_ngrams = pickle.load(fid)
+    else:
+        with open('sp_classifier.pkl', 'rb') as fid:
+            classifier = pickle.load(fid)
+
+        # loads words used in ngrams
+        with open('sp_training_char_ngrams.pkl', 'rb') as fid:
+            training_char_ngrams = pickle.load(fid)
+
+        # loads words used in ngrams
+        with open('sp_training_word_ngrams.pkl', 'rb') as fid:
+            training_word_ngrams = pickle.load(fid)
 
     # # Exactly the same as Text A in training data
     # text = '''There were a king with a large jaw and a queen with a plain face, on the
@@ -49,26 +65,21 @@ if __name__ == "__main__":
     # ngram feature set extraction
     tokenized_word = word_tokenize(text)
 
-    # character ngrams
+    # Character ngrams
     char_ngrams_feature_set = freqdist_test_selection(FreqDist(char_ngram(config.char_ngram_length, tokenized_word)), training_char_ngrams)
 
-    # word ngrams
+    # Word ngrams
     word_ngrams_feature_set = freqdist_test_selection(FreqDist(word_ngram(config.word_ngram_length, tokenized_word)), training_word_ngrams)
 
     # Average sentence length
-    avg_sentence_length_feature_set = avg_sentence_length(text)
+    avg_sentence_length_feature_set = avg_sentence_length(text, tokenized_word)
 
     # Aggregated feature set
     test_feature_set = char_ngrams_feature_set + word_ngrams_feature_set + [avg_sentence_length_feature_set]
 
-    
-
-    # normalise feature set
-    # L1 Least Absolute Deviations, abs(sum of row) = 1, insensitive to outliers
-    # L2 Least Squares, sum of squares, on each row = 1, takes outliers into consideration
-    # Must be the same from ClassifierProcess.py
+    # Normalise feature set
     test_feature_set_normalised = normalize([test_feature_set], norm=config.normalization_type)
 
-    # predict and output
-    prediction = eng_classifier.predict(test_feature_set_normalised)
+    # Predict and output
+    prediction = classifier.predict(test_feature_set_normalised)
     print('Predicted Author:', prediction[0])

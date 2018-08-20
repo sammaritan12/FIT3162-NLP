@@ -9,20 +9,33 @@ from math import ceil
 
 ### FREQDIST AUXILIARY FUNCTIONS ###
 # [x] Merge multiple frequency distributions
+# [x] Select n most common items from frequency distributions
+# [x] Find n most common items for each frequency distribution from aggregated set
 
-def merge_freqdists(freqDists):
+def merge_freqdists(freq_dists):
     """
     Merge multiple frequency lists together
-    - freqDists is represented as [FreqDist, FreqDist, ... , FreqDist]
+    - freq_dists is represented as [FreqDist, FreqDist, ... , FreqDist]
+
+    Returns
+    - merged_freqs , a FreqDist of the joined freq_dists
     """
-    mergedFreqs = FreqDist()
-    if len(freqDists) > 1:
-        for i in range(len(freqDists)):
-            mergedFreqs += freqDists[i]
+    merged_freqs = FreqDist()
+    if len(freq_dists) > 1:
+        for i in range(len(freq_dists)):
+            merged_freqs += freq_dists[i]
             
-    return mergedFreqs
+    return merged_freqs
 
 def freqdist_selection(text_distributions, n):
+    """
+    Selects the most common n words from text_distributions
+    - text_distributions, list of FreqDists [A, B, ... , C]
+
+    Returns
+    - item , list containing actual values [A, B, ... , C]
+    - item_counts , list containing counts of items [A count, B count, ... , C count]
+    """
     # merge distributions
     merged_dist = merge_freqdists(text_distributions)
 
@@ -51,9 +64,8 @@ def freqdist_test_selection(distribution, items):
     return [distribution[i] for i in items]
 
 ### NGRAM FEATURE EXTRACTION ###
-# [x] Create ngram from list of words
-# [x] Find n most common ngrams from entire corpus
-# [x] Select n most common ngrams that occur in each text
+# [x] Create character ngrams from list of words
+# [x] Create word ngrams from list of words
 
 def char_ngram(length, words):
     """
@@ -61,6 +73,9 @@ def char_ngram(length, words):
     - words is represented as [a, b, ..., c.]
     - where a, b, c are whole words
     - length is the length of the character n-gram required
+
+    Returns
+    - ngrams , list of character ngrams within the text
     """
     ngrams = []
     for i in words:
@@ -79,6 +94,9 @@ def word_ngram(length, words):
     - words is represented as [a, b, ..., c.]
     - where a, b, c are whole words
     - length is the length of the word n-gram required
+
+    Returns
+    - ngrams , list of word ngrams within the text
     """
     ngrams = []
     # if words is less than or equal to length, it is already an n-gram
@@ -93,20 +111,19 @@ def word_ngram(length, words):
 ### FREQUENCY DISTRIBUTION FEATURES ###
 # [x] Average sentence length
 # [] Punctuation frequency distribution
-# [] POS tagging
-# [] POS frequency distribution
+# [] POS tagging and frequency distribution
 
 # TODO punctuation feature extraction
 
 # TODO POS tagging and freq distribution
 
-def avg_sentence_length(text):
+def avg_sentence_length(text, words):
     """
     Returns the median sentence length of a text
     - text is represented as a string 'text'
     """
     sentences = sent_tokenize(text)
-    words = word_tokenize(text)
+    # words = word_tokenize(text)
 
     return len(words) / len(sentences)
 
