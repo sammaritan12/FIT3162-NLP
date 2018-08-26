@@ -19,7 +19,7 @@ def file_extraction():
     t0 = time.time()
 
     # lists all text files within the path provided
-    file_names = list_filenames(config.processed_text_path)
+    file_names = list_filenames(config.en_processed_text_path)
 
     # gets filenames and converts to strings
     processed_texts = [filename_to_text(i) for i in file_names]
