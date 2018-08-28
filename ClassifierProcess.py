@@ -120,35 +120,13 @@ if __name__ == "__main__":
     #### FEATURE NORMALIZATION ####
     t0 = time.time()
 
-    # Extract character ngrams from text
-    ngram_text_dists = [FreqDist(char_ngram(config.ngram_length, word_tokenize(i))) for i in processed_texts]
-    # collate ngram most common ngrams and their occurrences
-    training_words, ngram_feature_set = ngram_selection(ngram_text_dists, config.ngram_common_words)
-    # collate punctuation occurrences
-    punctuation, punctuation_feature_set = punctuation_frequency(ngram_text_dists)
-    # TODO Assemble feature set from gutenberg texts
-    ### PUTTING IT ALL TOGETHER ###
-    # Join features such that there consists 2 lists, x, y
-    # x: [Text Features A, Text Features B, ... , Text Features C]
-    # Text Features: [Average Sentence Length, 
-    #                 Punctuation 1 Freq, ... , Punctuation 14 Freq,
-    #                 POS 1 Freq, ... , POS 8 Freq,
-    #                 Most Common N-Gram Freq, ... , 1000th Most Common N-Gram Freq]
-    # y: [Author A, Author B, ... , Author C]
-
-    training_feature_set = ngram_feature_set
-
-    # TODO Normalise feature sets
-    # L1 Least Absolute Deviations, abs(sum of row) = 1, insensitive to outliers
-    # L2 Least Squares, sum of squares, on each row = 1, takes outliers into consideration
-
     training_feature_set_normalised = normalize(training_feature_set, norm=config.normalization_type)
 
     print("Normalization Time:", time.time() - t0)
     t0 = time.time()
 
     #### CLASSIFIER TRAINING ####
-    eng_classifier = english_classifier(training_feature_set_normalised, authors)
+    en_classifier = english_classifier(training_feature_set_normalised, authors)
 
     print("Classifier Fit Time:", time.time() - t0)
     
@@ -157,15 +135,15 @@ if __name__ == "__main__":
     t0 = time.time()
 
     # Save the classifier
-    with open('eng_classifier.pkl', 'wb') as fid:
-        pickle.dump(eng_classifier, fid)
+    with open(config.en_classifier_path, 'wb') as fid:
+        pickle.dump(en_classifier, fid)
 
     # Save training words used for character ngrams
-    with open('eng_training_char_ngrams.pkl', 'wb') as fid:
+    with open(config.en_training_char_ngrams_path, 'wb') as fid:
         pickle.dump(training_char_ngrams, fid)
 
     # Save training ngrams used for word ngrams
-    with open('eng_training_word_ngrams.pkl', 'wb') as fid:
+    with open(config.en_training_word_ngrams_path, 'wb') as fid:
         pickle.dump(training_word_ngrams, fid)
     
     print("File Save Time:", time.time() - t0)

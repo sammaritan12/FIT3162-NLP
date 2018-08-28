@@ -31,26 +31,26 @@ if __name__ == "__main__":
 
     if english:
         # loads classifer
-        with open('eng_classifier.pkl', 'rb') as fid:
+        with open(config.en_classifier_path, 'rb') as fid:
             classifier = pickle.load(fid)
 
         # loads words used in ngrams
-        with open('eng_training_char_ngrams.pkl', 'rb') as fid:
+        with open(config.en_training_char_ngrams_path, 'rb') as fid:
             training_char_ngrams = pickle.load(fid)
 
         # loads words used in ngrams
-        with open('eng_training_word_ngrams.pkl', 'rb') as fid:
+        with open(config.en_training_word_ngrams_path, 'rb') as fid:
             training_word_ngrams = pickle.load(fid)
     else:
-        with open('sp_classifier.pkl', 'rb') as fid:
+        with open(config.sp_classifier_path, 'rb') as fid:
             classifier = pickle.load(fid)
 
         # loads words used in ngrams
-        with open('sp_training_char_ngrams.pkl', 'rb') as fid:
+        with open(config.sp_training_char_ngrams_path, 'rb') as fid:
             training_char_ngrams = pickle.load(fid)
 
         # loads words used in ngrams
-        with open('sp_training_word_ngrams.pkl', 'rb') as fid:
+        with open(config.sp_training_word_ngrams_path, 'rb') as fid:
             training_word_ngrams = pickle.load(fid)
 
     # # Exactly the same as Text A in training data

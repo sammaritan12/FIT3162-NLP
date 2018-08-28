@@ -110,7 +110,7 @@ def word_ngram(length, words):
 
 def ngram_selection(text_distributions, n):
     # merge distributions
-    merged_dist = merge_freqs(text_distributions)
+    merged_dist = merge_freqdists(text_distributions)
     # initialise word count list and words
     words = []
     word_counts = [[] for _ in range(len(text_distributions))]
