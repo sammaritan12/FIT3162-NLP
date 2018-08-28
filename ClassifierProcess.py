@@ -120,7 +120,6 @@ if __name__ == "__main__":
     #### FEATURE NORMALIZATION ####
     t0 = time.time()
 
-<<<<<<< HEAD
     # Extract character ngrams from text
     ngram_text_dists = [FreqDist(char_ngram(config.ngram_length, word_tokenize(i))) for i in processed_texts]
     # collate ngram most common ngrams and their occurrences
@@ -142,8 +141,7 @@ if __name__ == "__main__":
     # TODO Normalise feature sets
     # L1 Least Absolute Deviations, abs(sum of row) = 1, insensitive to outliers
     # L2 Least Squares, sum of squares, on each row = 1, takes outliers into consideration
-=======
->>>>>>> origin/master
+
     training_feature_set_normalised = normalize(training_feature_set, norm=config.normalization_type)
 
     print("Normalization Time:", time.time() - t0)

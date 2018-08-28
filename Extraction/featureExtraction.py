@@ -108,7 +108,6 @@ def word_ngram(length, words):
             ngrams.append(" ".join(words[i - length + 1: i + 1]))
     return ngrams
 
-<<<<<<< HEAD
 def ngram_selection(text_distributions, n):
     # merge distributions
     merged_dist = merge_freqs(text_distributions)
@@ -131,9 +130,6 @@ def ngram_selection(text_distributions, n):
 def ngram_test_selection(distribution, words):
     return [distribution[w] for w in words]
 
-
-=======
->>>>>>> origin/master
 ### FREQUENCY DISTRIBUTION FEATURES ###
 # [x] Average sentence length
 # [] Punctuation frequency distribution
