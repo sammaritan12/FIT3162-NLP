@@ -1,4 +1,4 @@
-from sklearn.svm import LinearSVC
+from sklearn.svm import LinearSVC, SVC
 from sklearn.feature_extraction.text import TfidfVectorizer
 # BELOW IS A PLAN FOR HOW TO CREATE CLASSIFIERS
 
@@ -34,7 +34,7 @@ def textVectorizer(texts):
 # [] Spanish Classifier
 # [] Tweak Spanish Classifier for highest accuracy
 
-def englishClassifier(vectorisedNormalisedData, dataAnswers):
+def english_classifier(vectorisedNormalisedData, dataAnswers):
     """
     Fits normalised data to LinearSVC
 
@@ -49,7 +49,7 @@ def englishClassifier(vectorisedNormalisedData, dataAnswers):
     Where a, b, c are the authors of documents A, B, C and are matched via the index
     """
     # LinearSVC is used as a multiclass, using a one vs all approach
-    svm = LinearSVC(verbose=True)
+    svm = SVC(kernel="rbf", verbose=True)
 
     # Fitting training data with answers
     svm.fit(vectorisedNormalisedData, dataAnswers)

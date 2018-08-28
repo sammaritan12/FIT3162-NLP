@@ -1,7 +1,0 @@
-This was the first week back at university where we started semester 2. We had planned in semester 1 that we were to start work during the mid semester break but this plan turned out to be false. We didn't end up starting due to being overseas, work commitments and other unforeseen events.
-
-We talked with Jojo Wong with regards to starting our assignment and how we did during semester 1. Jojo was really helpful towards picking a suitable dataset. She mentioned that different time periods (e.g. Shakespeare using Early Modern English and J.R.R. Tolkien using contemporary English), types of writing (Poems, Narrative, Fiction, Non-Fiction, Play, etc.) and various other categories will majorly affect the training process with our classifiers.
-
-We decided that we need to start working on the project straight away. Things that need to be organised, tools need to be set up and various administrative tasks that need to be undertaken before starting on our coding. This includes finding the correct data sets which are most suitable for the project.
-
-We are hoping to have this done in a few days as this should not take that long.

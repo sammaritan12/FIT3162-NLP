@@ -1,7 +1,0 @@
-This week I worked on the classification as well as the feature extraction. It was a very long process trying to understand how the items fit in and worked together. I explained this with Amelia during the lab, trying to clarify anything that needed to be worked on.
-
-Amelia showed me what she was up to with the preprocessing, hitting a few snags on the way. Overall however, I think that we have overcome the hard part - that is the lethargy to start the projecft due to the sheer amount of work percieived to be done.
-
-Jojo was very helpful with regards to what to do with NLTK, as well as the features that need to be extracted. She also mentioned that sci-kit learn and the machine learning steps that should also be considered, we took this into consideration.
-
-Finally, I think the amount of work that I had perceived we needed to do is actually lower than when we didn't know what was happening, that during semester 1 while it was very useful I don't think we actually had any idea on how to finish what needed to be done.
