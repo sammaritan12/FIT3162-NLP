@@ -17,7 +17,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 ### VECTORIZER FEATURES ###
 # [x] Turn text to numbers
 
-def textVectorizer(texts):
+def text_vectorizer(texts):
     """
     Turns texts to numbers
     - texts is a list of strings
@@ -29,12 +29,12 @@ def textVectorizer(texts):
 
 
 ### CLASSIFICATION ###
-# [x] English Classifier
-# [] Tweak English Classifier for highest accuracy
-# [] Spanish Classifier
-# [] Tweak Spanish Classifier for highest accuracy
+# [x] english classifier
+# [] Tweak english classifier for highest accuracy
+# [] spanish classifier
+# [] Tweak spanish classifier for highest accuracy
 
-def english_classifier(vectorisedNormalisedData, dataAnswers):
+def english_classifier(vectorised_normalised_data, data_answers):
     """
     Fits normalised data to LinearSVC
 
@@ -52,5 +52,5 @@ def english_classifier(vectorisedNormalisedData, dataAnswers):
     svm = SVC(kernel="rbf", verbose=True)
 
     # Fitting training data with answers
-    svm.fit(vectorisedNormalisedData, dataAnswers)
+    svm.fit(vectorised_normalised_data, data_answers)
     return svm

@@ -36,13 +36,19 @@ import numpy, scipy, nltk, sklearn
 # TO RUN
 0. Check `config.py` for options to fine-grain classifier options
    
-1. Run the ClassifierProcess.py file first to initially train classifier, arguments is english, spanish or both
+1. Run the `extract_features.py` file first to initially extract features from texts, arguments is english, spanish or both
 
     ```
-    python ClassifierProcess.py english|spanish|both
+    python extract_features.py english|spanish|both
     ```
 
-2. Run the main.py file with text file as argument to be processed, as well as language
+2. Run the `create_classifier.py` file to build the classifier, arguments is english, spanish or both
+
+    ```
+    python create_classifier.py english|spanish|both
+    ```
+
+3. Run the `main.py` file with text file as argument to be processed, as well as language
 
     ```
     python main.py file.txt english|spanish

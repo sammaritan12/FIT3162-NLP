@@ -1,10 +1,10 @@
-from Extraction.featureExtraction import *
-from Classifier.englishClassifier import *
-from Extraction.fileExtraction import *
+from extraction.feature_extraction import *
+from extraction.file_extraction import *
 from sklearn.preprocessing import normalize
 import pickle
 import config
 from sys import argv
+from nltk import word_tokenize
 
 # MAIN RUN FILE
 # This is the main run file for the project, will be command line for now
@@ -18,7 +18,7 @@ if __name__ == "__main__":
         print("Please enter a gutenberg file to analyse")
         quit()
 
-    # Second argument is language, if empty use English
+    # Second argument is language, if empty use english
     if len(argv) > 2 and argv[2].lower()[:2] == 'sp':
         english = False
     elif len(argv) > 2 and argv[2].lower()[:2] == 'en':
@@ -30,7 +30,7 @@ if __name__ == "__main__":
     text = filename_to_text(argv[1])
 
     if english:
-        # loads classifer
+        # loads classifier
         with open(config.en_classifier_path, 'rb') as fid:
             classifier = pickle.load(fid)
 
@@ -66,10 +66,12 @@ if __name__ == "__main__":
     tokenized_word = word_tokenize(text)
 
     # Character ngrams
-    char_ngrams_feature_set = freqdist_test_selection(FreqDist(char_ngram(config.char_ngram_length, tokenized_word)), training_char_ngrams)
+    char_ngrams_feature_set = \
+        freqdist_test_selection(FreqDist(char_ngram(config.char_ngram_length, tokenized_word)), training_char_ngrams)
 
     # Word ngrams
-    word_ngrams_feature_set = freqdist_test_selection(FreqDist(word_ngram(config.word_ngram_length, tokenized_word)), training_word_ngrams)
+    word_ngrams_feature_set = \
+        freqdist_test_selection(FreqDist(word_ngram(config.word_ngram_length, tokenized_word)), training_word_ngrams)
 
     # Average sentence length
     avg_sentence_length_feature_set = avg_sentence_length(text, tokenized_word)

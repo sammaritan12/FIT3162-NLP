@@ -1,16 +1,15 @@
-from nltk import sent_tokenize, word_tokenize, FreqDist
-from os import listdir
-from os.path import isfile, join
+from nltk import sent_tokenize, FreqDist
 from math import ceil
 
 # Assumptions:
 # - clean preprocessed data is a text file containing text only
 # - extraction will be done using NLTK
 
-### FREQDIST AUXILIARY FUNCTIONS ###
+# FREQDIST AUXILIARY FUNCTIONS #
 # [x] Merge multiple frequency distributions
 # [x] Select n most common items from frequency distributions
 # [x] Find n most common items for each frequency distribution from aggregated set
+
 
 def merge_freqdists(freq_dists):
     """
@@ -27,6 +26,7 @@ def merge_freqdists(freq_dists):
             
     return merged_freqs
 
+
 def freqdist_selection(text_distributions, n):
     """
     Selects the most common n words from text_distributions
@@ -39,7 +39,7 @@ def freqdist_selection(text_distributions, n):
     # merge distributions
     merged_dist = merge_freqdists(text_distributions)
 
-    # intialise item count list and items
+    # initialise item count list and items
     items = []
     item_counts = [[] for _ in range(len(text_distributions))]
 
@@ -50,12 +50,13 @@ def freqdist_selection(text_distributions, n):
     for i in range(n):
         for t in range(len(text_distributions)):
             if text_distributions[t][top_n_items[i][0]]:
-                item_counts[t].append(text_distributions[t][ top_n_items[i][0] ])
+                item_counts[t].append(text_distributions[t][top_n_items[i][0]])
             else:
                 item_counts[t].append(0)
         items.append(top_n_items[i][0])
 
     return items, item_counts
+
 
 def freqdist_test_selection(distribution, items):
     """
@@ -63,9 +64,10 @@ def freqdist_test_selection(distribution, items):
     """
     return [distribution[i] for i in items]
 
-### NGRAM FEATURE EXTRACTION ###
+# NGRAM FEATURE EXTRACTION #
 # [x] Create character ngrams from list of words
 # [x] Create word ngrams from list of words
+
 
 def char_ngram(length, words):
     """
@@ -88,6 +90,7 @@ def char_ngram(length, words):
                 ngrams.append(i[j - length + 1: j + 1])
     return ngrams
 
+
 def word_ngram(length, words):
     """
     Given a list of strings, convert to word ngrams, where length is length of ngram
@@ -108,6 +111,7 @@ def word_ngram(length, words):
             ngrams.append(" ".join(words[i - length + 1: i + 1]))
     return ngrams
 
+
 def ngram_selection(text_distributions, n):
     # merge distributions
     merged_dist = merge_freqdists(text_distributions)
@@ -121,23 +125,25 @@ def ngram_selection(text_distributions, n):
     for i in range(n):
         for t in range(len(text_distributions)):
             if text_distributions[t][top_n_words[i][0]]:
-                word_counts[t].append(text_distributions[t][ top_n_words[i][0] ])
+                word_counts[t].append(text_distributions[t][top_n_words[i][0]])
             else:
                 word_counts[t].append(0)
         words.append(top_n_words[i][0])
     return words, word_counts
 
+
 def ngram_test_selection(distribution, words):
     return [distribution[w] for w in words]
 
-### FREQUENCY DISTRIBUTION FEATURES ###
+# FREQUENCY DISTRIBUTION FEATURES #
 # [x] Average sentence length
-# [] Punctuation frequency distribution
+# [x] Punctuation frequency distribution
 # [] POS tagging and frequency distribution
 
 # TODO punctuation feature extraction
 
 # TODO POS tagging and freq distribution
+
 
 def avg_sentence_length(text, words):
     """
@@ -149,6 +155,7 @@ def avg_sentence_length(text, words):
 
     return len(words) / len(sentences)
 
+
 def punctuation_frequency(text_distributions):
     punctuation_set = [".", "?", "!", ",", ";", ":", "−", "-", "[", "]", "{", "}", "(", ")", "'", "\""]
     # initialise word count list and words
@@ -159,7 +166,7 @@ def punctuation_frequency(text_distributions):
     for i in range(len(punctuation_set)):
         for t in range(len(text_distributions)):
             if text_distributions[t][punctuation_set[i][0]]:
-                word_counts[t].append(text_distributions[t][punctuation_set[i][0] ])
+                word_counts[t].append(text_distributions[t][punctuation_set[i][0]])
             else:
                 word_counts[t].append(0)
         words.append(punctuation_set[i])
