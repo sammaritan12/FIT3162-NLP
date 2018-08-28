@@ -120,6 +120,28 @@ if __name__ == "__main__":
     #### FEATURE NORMALIZATION ####
     t0 = time.time()
 
+    # Extract character ngrams from text
+    ngram_text_dists = [FreqDist(char_ngram(config.ngram_length, word_tokenize(i))) for i in processed_texts]
+    # collate ngram most common ngrams and their occurrences
+    training_words, ngram_feature_set = ngram_selection(ngram_text_dists, config.ngram_common_words)
+    # collate punctuation occurrences
+    punctuation, punctuation_feature_set = punctuation_frequency(ngram_text_dists)
+    # TODO Assemble feature set from gutenberg texts
+    ### PUTTING IT ALL TOGETHER ###
+    # Join features such that there consists 2 lists, x, y
+    # x: [Text Features A, Text Features B, ... , Text Features C]
+    # Text Features: [Average Sentence Length, 
+    #                 Punctuation 1 Freq, ... , Punctuation 14 Freq,
+    #                 POS 1 Freq, ... , POS 8 Freq,
+    #                 Most Common N-Gram Freq, ... , 1000th Most Common N-Gram Freq]
+    # y: [Author A, Author B, ... , Author C]
+
+    training_feature_set = ngram_feature_set
+
+    # TODO Normalise feature sets
+    # L1 Least Absolute Deviations, abs(sum of row) = 1, insensitive to outliers
+    # L2 Least Squares, sum of squares, on each row = 1, takes outliers into consideration
+
     training_feature_set_normalised = normalize(training_feature_set, norm=config.normalization_type)
 
     print("Normalization Time:", time.time() - t0)
