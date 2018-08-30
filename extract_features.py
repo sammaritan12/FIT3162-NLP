@@ -172,6 +172,10 @@ if __name__ == "__main__":
         with open(config.en_avg_sentence_length_feature_set_path, 'wb') as fid:
             pickle.dump(en_avg_sentence_length_feature_set, fid)
 
+        # save english average sentence length feature set
+        with open(config.en_authors_path, 'wb') as fid:
+            pickle.dump(en_authors, fid)
+
     # Spanish
     # if language <= 0:
     #     # Save spanish training words used for character ngrams
@@ -193,6 +197,10 @@ if __name__ == "__main__":
     #     # save spanish average sentence length feature set
     #     with open(config.sp_avg_sentence_length_feature_set_path, 'wb') as fid:
     #         pickle.dump(sp_avg_sentence_length_feature_set, fid)
+
+    #     # save english average sentence length feature set
+    #         with open(config.sp_authors_path, 'wb') as fid:
+    #             pickle.dump(sp_authors, fid)
     
     print("File Save Time:", time.time() - t0)
 

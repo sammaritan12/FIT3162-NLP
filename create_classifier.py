@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
     # Loading English Features
     if language >= 0:
-        with open(config.en_authors, 'rb') as fid:
+        with open(config.en_authors_path, 'rb') as fid:
             en_authors = pickle.load(fid)
 
         with open(config.en_char_ngram_feature_set_path, 'rb') as fid:
@@ -39,7 +39,7 @@ if __name__ == '__main__':
 
     # Loading Spanish Features
     # if language <= 0:
-    #     with open(config.sp_authors, 'rb') as fid:
+    #     with open(config.sp_authors_path, 'rb') as fid:
     #         sp_authors = pickle.load(fid)
 
     #     with open(config.sp_char_ngram_feature_set_path, 'rb') as fid:
@@ -62,7 +62,7 @@ if __name__ == '__main__':
         for i in range(len(en_authors)):
             en_training_feature_set.append(
                 [en_avg_sentence_length_feature_set[i]] + en_char_ngram_feature_set[i] + en_word_ngram_feature_set[i])
-        
+
         en_training_feature_set_normalised = normalize(en_training_feature_set, norm=config.normalization_type)
 
     # Spanish Features
