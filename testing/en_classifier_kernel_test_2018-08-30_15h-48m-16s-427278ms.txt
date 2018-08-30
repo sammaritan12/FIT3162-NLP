@@ -1,0 +1,5 @@
+TEST: English Classifier Kernels 2018-08-30_15h-48m-16s-427278ms
+Features:
+- Character N-Grams, Amount: 4, 100
+
+Using L2 Normalisation, Least Squares

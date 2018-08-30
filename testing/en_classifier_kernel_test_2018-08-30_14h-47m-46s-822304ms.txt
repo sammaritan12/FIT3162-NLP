@@ -1,0 +1,9 @@
+TEST: English Classifier Kernels 2018-08-30_14h-47m-46s-822304ms
+Features:
+Average Sentence Length
+
+Accuracy: 0.19 (+/- 0.14)
+Accuracy: 0.31 (+/- 0.17)
+Accuracy: 0.28 (+/- 0.20)
+Accuracy: 0.37 (+/- 0.18)
+Accuracy: 0.10 (+/- 0.00)

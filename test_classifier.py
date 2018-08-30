@@ -7,6 +7,7 @@ from itertools import combinations
 from sklearn.model_selection import cross_val_score
 from sklearn.preprocessing import normalize
 from sklearn.svm import SVC, LinearSVC
+from sklearn.naive_bayes import GaussianNB, BernoulliNB, MultinomialNB
 
 import config
 from classifier.english_classifier import english_classifier
@@ -45,38 +46,50 @@ def test_classifier_kernels(authors, features_normalized, features_text, languag
     # Linear SVC Kernel
     linear_svc = LinearSVC()
     linear_svc_score = cv_classifier_score(linear_svc, features_normalized, authors)
-    output_file.write(linear_svc_score + '\n')
+    output_file.write("Linear SVC " + linear_svc_score + '\n')
     print("Linear SVC", linear_svc_score)
 
     # SVC Linear Kernel
     svc_linear = SVC(kernel='linear')
     svc_linear_score = cv_classifier_score(svc_linear, features_normalized, authors)
-    output_file.write(svc_linear_score + '\n')
+    output_file.write("SVC with Linear Kernel " + svc_linear_score + '\n')
     print("SVC with Linear Kernel", svc_linear_score)
 
     # SVC Poly Kernel
     svc_poly = SVC(kernel='poly')
     svc_poly_score = cv_classifier_score(svc_poly, features_normalized, authors)
-    output_file.write(svc_poly_score + '\n')
+    output_file.write("SVC with Poly Kerne l" + svc_poly_score + '\n')
     print("SVC with Poly Kernel", svc_poly_score)
 
     # SVC rbf Kernel
     svc_rbf = SVC(kernel='rbf')
     svc_rbf_score = cv_classifier_score(svc_rbf, features_normalized, authors)
-    output_file.write(svc_rbf_score + '\n')
+    output_file.write("SVC with rbf Kernel " + svc_rbf_score + '\n')
     print("SVC with rbf Kernel", svc_rbf_score)
 
     # SVC Sigmoid Kernel
     svc_sigmoid = SVC(kernel='sigmoid')
     svc_sigmoid_score = cv_classifier_score(svc_sigmoid, features_normalized, authors)
-    output_file.write(svc_sigmoid_score + '\n')
-    print("SVC with Sigmoid Kernel", svc_sigmoid_score, '\n')
+    output_file.write("SVC with Sigmoid Kernel " + svc_sigmoid_score + '\n')
+    print("SVC with Sigmoid Kernel", svc_sigmoid_score)
 
-    # # SVC Precomputed Kernel
-    # svc_precomputed = SVC(kernel='precomputed')
-    # svc_precomputed_score = cv_classifier_score(svc_precomputed, features_normalized, authors)
-    # output_file.write(svc_precomputed_score + '\n')
-    # print("SVC with Precomputed Kernel", svc_precomputed_score)
+    # Gaussian Naive Bayes
+    nb_gaussian = GaussianNB()
+    nb_gaussian_score = cv_classifier_score(nb_gaussian, features_normalized, authors)
+    output_file.write("Gaussian Naive Bayes " + nb_gaussian_score + '\n')
+    print("Gaussian Naive Bayes", nb_gaussian_score)
+
+    # Bernoulli Naive Bayes
+    nb_bernoulli = BernoulliNB()
+    nb_bernoulli_score = cv_classifier_score(nb_bernoulli, features_normalized, authors)
+    output_file.write("Bernoulli Naive Bayes " + nb_bernoulli_score + '\n')
+    print("Bernoulli Naive Bayes", nb_bernoulli_score)
+
+    # Multinomial Naive Bayes
+    nb_multinomial = MultinomialNB()
+    nb_multinomial_score = cv_classifier_score(nb_multinomial, features_normalized, authors)
+    output_file.write("Multinomial Naive Bayes" + nb_multinomial_score + '\n')
+    print("Multinomial Naive Bayes", nb_multinomial_score, '\n')
 
     output_file.close()
 
