@@ -1,5 +1,6 @@
-from sklearn.svm import LinearSVC, SVC
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.svm import SVC, LinearSVC
+
 # BELOW IS A PLAN FOR HOW TO CREATE CLASSIFIERS
 
 # 1. For each author there is an SVM classifier

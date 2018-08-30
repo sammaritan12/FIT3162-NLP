@@ -1,11 +1,14 @@
-from extraction.feature_extraction import freqdist_selection, char_ngram, word_ngram, avg_sentence_length
-from extraction.file_extraction import filename_to_text, list_filenames
 import pickle
-import config
-from sys import argv
 import time
+from sys import argv
+
 from nltk.probability import FreqDist
 from nltk.tokenize import word_tokenize
+
+import config
+from extraction.feature_extraction import (avg_sentence_length, char_ngram,
+                                           freqdist_selection, word_ngram)
+from extraction.file_extraction import filename_to_text, list_filenames
 
 
 def file_extraction(language):

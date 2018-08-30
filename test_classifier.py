@@ -1,10 +1,13 @@
 import pickle
-import config
 import time
-from sklearn.preprocessing import normalize
-from classifier.english_classifier import *
 from sys import argv
+
 from sklearn.model_selection import cross_val_score
+from sklearn.preprocessing import normalize
+from sklearn.svm import SVC, LinearSVC
+
+import config
+from classifier.english_classifier import english_classifier
 
 if __name__ == '__main__':
     t1 = time.time()

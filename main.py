@@ -1,10 +1,13 @@
-from extraction.feature_extraction import *
-from extraction.file_extraction import *
-from sklearn.preprocessing import normalize
 import pickle
-import config
 from sys import argv
+
 from nltk import word_tokenize
+from sklearn.preprocessing import normalize
+
+import config
+from extraction.feature_extraction import (avg_sentence_length, char_ngram,
+                                           freqdist_selection, word_ngram)
+from extraction.file_extraction import filename_to_text, list_filenames
 
 # MAIN RUN FILE
 # This is the main run file for the project, will be command line for now

@@ -1,9 +1,11 @@
 import pickle
-import config
 import time
-from sklearn.preprocessing import normalize
-from classifier.english_classifier import *
 from sys import argv
+
+from sklearn.preprocessing import normalize
+
+import config
+from classifier.english_classifier import english_classifier
 
 if __name__ == '__main__':
     t1 = time.time()
@@ -100,4 +102,3 @@ if __name__ == '__main__':
         print(config.EN_NAME, "Classifier created in", time.time() - t1, "seconds.")
     # if language <= 0:
     #     print(config.SP_NAME, "Classifier created in", time.time() - t1, "seconds.")
-
