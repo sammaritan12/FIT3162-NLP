@@ -1,7 +1,8 @@
-TEST: English Classifier Kernels 2018-08-30_14h-32m-48s-210394ms
+TEST: English Classifier Kernels 2018-08-30_15h-11m-32s-539160ms
 Features:
-Word N-Grams, Amount: 2, 100
+- Word N-Grams, Amount: 2, 100
 
+Using L2 Normalisation, Least Squares
 Accuracy: 0.62 (+/- 0.34)
 Accuracy: 0.54 (+/- 0.36)
 Accuracy: 0.56 (+/- 0.29)

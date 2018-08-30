@@ -1,8 +1,8 @@
-TEST: English Classifier Kernels 2018-08-30_14h-32m-51s-086585ms
+TEST: English Classifier Kernels 2018-08-30_15h-11m-31s-461530ms
 Features:
-Character N-Grams, Amount: 4, 100
-Average Sentence Length
+- Character N-Grams, Amount: 4, 100
 
+Using L2 Normalisation, Least Squares
 Accuracy: 0.76 (+/- 0.24)
 Accuracy: 0.70 (+/- 0.32)
 Accuracy: 0.68 (+/- 0.29)

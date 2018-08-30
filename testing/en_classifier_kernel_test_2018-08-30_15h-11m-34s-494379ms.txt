@@ -1,0 +1,11 @@
+TEST: English Classifier Kernels 2018-08-30_15h-11m-34s-494379ms
+Features:
+- Character N-Grams, Amount: 4, 100
+- Word N-Grams, Amount: 2, 100
+
+Using L2 Normalisation, Least Squares
+Accuracy: 0.74 (+/- 0.24)
+Accuracy: 0.71 (+/- 0.34)
+Accuracy: 0.66 (+/- 0.27)
+Accuracy: 0.71 (+/- 0.34)
+Accuracy: 0.71 (+/- 0.34)

@@ -1,7 +1,8 @@
-TEST: English Classifier Kernels 2018-08-30_14h-32m-49s-121007ms
+TEST: English Classifier Kernels 2018-08-30_15h-11m-33s-596396ms
 Features:
-Average Sentence Length
+- Average Sentence Length
 
+Using L2 Normalisation, Least Squares
 Accuracy: 0.10 (+/- 0.00)
 Accuracy: 0.10 (+/- 0.00)
 Accuracy: 0.10 (+/- 0.00)

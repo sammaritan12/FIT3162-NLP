@@ -39,6 +39,9 @@ def test_classifier_kernels(authors, features_normalized, features_text, languag
     print("TEST: English Classifier Kernels " + curr_time)
     print("Features:\n" + features_text)
 
+    output_file.write('Using L2 Normalisation, Least Squares\n')
+    print('Using', config.normalization_type.upper(), 'Normalisation\n')
+
     # Linear SVC Kernel
     linear_svc = LinearSVC()
     linear_svc_score = cv_classifier_score(linear_svc, features_normalized, authors)
@@ -67,7 +70,7 @@ def test_classifier_kernels(authors, features_normalized, features_text, languag
     svc_sigmoid = SVC(kernel='sigmoid')
     svc_sigmoid_score = cv_classifier_score(svc_sigmoid, features_normalized, authors)
     output_file.write(svc_sigmoid_score + '\n')
-    print("SVC with Sigmoid Kernel", svc_sigmoid_score)
+    print("SVC with Sigmoid Kernel", svc_sigmoid_score, '\n')
 
     # # SVC Precomputed Kernel
     # svc_precomputed = SVC(kernel='precomputed')
@@ -76,8 +79,6 @@ def test_classifier_kernels(authors, features_normalized, features_text, languag
     # print("SVC with Precomputed Kernel", svc_precomputed_score)
 
     output_file.close()
-
-    return
 
 
 if __name__ == '__main__':
@@ -130,9 +131,9 @@ if __name__ == '__main__':
     # English Features
     if language >= 0:
         current_features =\
-        [(en_char_ngram_feature_set, 'Character N-Grams, Amount: ' + str(config.char_ngram_length) + ', ' + str(config.ngram_common_words) + '\n'),\
-        (en_word_ngram_feature_set, 'Word N-Grams, Amount: ' + str(config.word_ngram_length) + ', ' + str(config.ngram_common_words) + '\n'),\
-        (en_avg_sentence_length_feature_set, 'Average Sentence Length\n')]
+        [(en_char_ngram_feature_set, '- Character N-Grams, Amount: ' + str(config.char_ngram_length) + ', ' + str(config.ngram_common_words) + '\n'),\
+        (en_word_ngram_feature_set, '- Word N-Grams, Amount: ' + str(config.word_ngram_length) + ', ' + str(config.ngram_common_words) + '\n'),\
+        (en_avg_sentence_length_feature_set, '- Average Sentence Length\n')]
 
         # Go through every combination of the features
         for j in range(len(current_features)):
@@ -145,7 +146,7 @@ if __name__ == '__main__':
                 for i in range(len(en_authors)):
                     curr_feature = []
                     for k in range(len(subset)):
-                        if subset[k][1][:23] == 'Average Sentence Length':
+                        if subset[k][1][:3] == '- A':
                             curr_feature.append(subset[k][0][i])
                         else:
                             curr_feature.extend(subset[k][0][i])
