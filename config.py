@@ -27,3 +27,10 @@ sp_training_word_ngrams_path = '.\serialised_objects\sp_training_word_ngrams.pkl
 sp_char_ngram_feature_set_path = '.\serialised_objects\sp_char_ngram_feature_set.pkl'
 sp_word_ngram_feature_set_path = '.\serialised_objects\sp_word_ngram_feature_set.pkl'
 sp_avg_sentence_length_feature_set_path = '.\serialised_objects\sp_avg_sentence_length_feature_set.pkl'
+
+# Constants
+SPANISH = -1
+ENGLISH = 1
+BOTH = 0
+SP_NAME = 'Spanish'
+EN_NAME = 'English'

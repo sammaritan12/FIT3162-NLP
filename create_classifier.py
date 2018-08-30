@@ -11,13 +11,13 @@ if __name__ == '__main__':
     # 0 == both
     # 1 == english
     # -1 == spanish
-    language = 0
+    language = config.BOTH
 
     if len(argv) > 1:
-        if argv[1].lower() == 'english':
-            language = 1
-        elif argv[1].lower() == 'spanish':
-            language = -1
+        if argv[1].lower() == config.EN_NAME.lower():
+            language = config.ENGLISH
+        elif argv[1].lower() == config.SP_NAME.lower():
+            language = config.SPANISH
 
     # FEATURE SETS LOADING FROM FILE #
 
@@ -97,7 +97,7 @@ if __name__ == '__main__':
     print("classifier Fit and File Saving Time:", time.time() - t0)
 
     if language >= 0:
-        print("English Classifier created in", time.time() - t1, "seconds.")
+        print(config.EN_NAME, "Classifier created in", time.time() - t1, "seconds.")
     # if language <= 0:
-    #     print("Spanish Classifier created in", time.time() - t1, "seconds.")
+    #     print(config.SP_NAME, "Classifier created in", time.time() - t1, "seconds.")
 
