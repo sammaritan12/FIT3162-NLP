@@ -13757,11 +13757,11 @@ NOTA DE TRANSCRIPCIÓN
     suficiente espacio libre.
 
   * Se han realizado, además, los siguientes cambios:
-    p.   6: sepultando → sepultado  (“un pueblo, sepultado de la noche
+    p.   6: sepultando  sepultado  (“un pueblo, sepultado de la noche
                                       á la mañana”)
-    p. 190:    fijaban → fijaba     (“y donde quiera que fijaba la
+    p. 190:    fijaban  fijaba     (“y donde quiera que fijaba la
                                       vista”)
-    p. 451:       XXVI → XXIV       (errata en la numeración del
+    p. 451:       XXVI  XXIV       (errata en la numeración del
                                       capítulo)
 
   * En el Apéndice, p. 559 a 566, se ha reparado la ordenación
