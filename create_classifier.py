@@ -37,6 +37,9 @@ if __name__ == '__main__':
         with open(config.en_avg_sentence_length_feature_set_path, 'rb') as fid:
             en_avg_sentence_length_feature_set = pickle.load(fid)
 
+        # with open(config.en_punctuation_feature_set_path, 'rb') as fid:
+        #     en_punctuation_feature_set = pickle.load(fid)
+
     # Loading Spanish Features
     # if language <= 0:
     #     with open(config.sp_authors_path, 'rb') as fid:
@@ -51,6 +54,9 @@ if __name__ == '__main__':
     #     with open(config.sp_avg_sentence_length_feature_set_path, 'rb') as fid:
     #         sp_avg_sentence_length_feature_set = pickle.load(fid)
 
+    #     with open(config.sp_punctuation_feature_set_path, 'rb') as fid:
+    #         sp_punctuation_feature_set = pickle.load(fid)
+
     # FEATURE NORMALIZATION AND NORMALIZATION #
     t0 = time.time()
     
@@ -61,7 +67,8 @@ if __name__ == '__main__':
         # Assembling them such that they look like x
         for i in range(len(en_authors)):
             en_training_feature_set.append(
-                [en_avg_sentence_length_feature_set[i]] + en_char_ngram_feature_set[i] + en_word_ngram_feature_set[i])
+                [en_avg_sentence_length_feature_set[i]] + en_char_ngram_feature_set[i] \
+                + en_word_ngram_feature_set[i])
 
         en_training_feature_set_normalised = normalize(en_training_feature_set, norm=config.normalization_type)
 
@@ -72,7 +79,8 @@ if __name__ == '__main__':
     #     # Assembling them such that they look like x
     #     for i in range(len(sp_authors)):
     #         sp_training_feature_set.append(
-    #             [sp_avg_sentence_length_feature_set[i]] + sp_char_ngram_feature_set[i] + sp_word_ngram_feature_set[i])
+    #             [sp_avg_sentence_length_feature_set[i]] + sp_char_ngram_feature_set[i] \
+    #             + sp_word_ngram_feature_set[i])
 
     #     sp_training_feature_set_normalised = normalize(sp_training_feature_set, norm=config.normalization_type)
 

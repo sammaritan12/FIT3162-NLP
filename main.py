@@ -1,12 +1,14 @@
 import pickle
 from sys import argv
 
-from nltk import word_tokenize
+from nltk import FreqDist, word_tokenize
 from sklearn.preprocessing import normalize
 
 import config
 from extraction.feature_extraction import (avg_sentence_length, char_ngram,
-                                           freqdist_selection, word_ngram)
+                                           freqdist_selection,
+                                           freqdist_test_selection,
+                                           punctuation_frequency, word_ngram)
 from extraction.file_extraction import filename_to_text, list_filenames
 
 # MAIN RUN FILE
@@ -37,24 +39,32 @@ if __name__ == "__main__":
         with open(config.en_classifier_path, 'rb') as fid:
             classifier = pickle.load(fid)
 
-        # loads words used in ngrams
+        # loads words used in character ngrams
         with open(config.en_training_char_ngrams_path, 'rb') as fid:
             training_char_ngrams = pickle.load(fid)
 
-        # loads words used in ngrams
+        # loads words used in word ngrams
         with open(config.en_training_word_ngrams_path, 'rb') as fid:
             training_word_ngrams = pickle.load(fid)
+
+        # loads words used in ngrams
+        with open(config.en_training_punctuation_path, 'rb') as fid:
+            training_punctuation = pickle.load(fid)
     else:
         with open(config.sp_classifier_path, 'rb') as fid:
             classifier = pickle.load(fid)
 
-        # loads words used in ngrams
+        # loads words used in character ngrams
         with open(config.sp_training_char_ngrams_path, 'rb') as fid:
             training_char_ngrams = pickle.load(fid)
 
-        # loads words used in ngrams
+        # loads words used in word ngrams
         with open(config.sp_training_word_ngrams_path, 'rb') as fid:
             training_word_ngrams = pickle.load(fid)
+
+        # # load punctuation used in punctuation frequency
+        # with open(config.sp_training_punctuation_path, 'rb') as fid:
+        #     training_punctuation = pickle.load(fid)
 
     # # Exactly the same as Text A in training data
     # text = '''There were a king with a large jaw and a queen with a plain face, on the
@@ -79,8 +89,13 @@ if __name__ == "__main__":
     # Average sentence length
     avg_sentence_length_feature_set = avg_sentence_length(text, tokenized_word)
 
+    # # Punctuation frequency
+    # punctuation_feature_set = \
+    #     freqdist_test_selection(FreqDist(punctuation_frequency(tokenized_word)), training_punctuation)
+
     # Aggregated feature set
-    test_feature_set = char_ngrams_feature_set + word_ngrams_feature_set + [avg_sentence_length_feature_set]
+    test_feature_set = char_ngrams_feature_set + word_ngrams_feature_set +\
+        [avg_sentence_length_feature_set]
 
     # Normalise feature set
     test_feature_set_normalised = normalize([test_feature_set], norm=config.normalization_type)

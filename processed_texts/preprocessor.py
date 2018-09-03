@@ -4,9 +4,11 @@ from sys import argv
 import os
 
 def list_filenames(dirpath):
+    '''Grabs all text files in diretory and returns as list'''
     return glob(dirpath + '/**/*.txt', recursive=True)
 
 def extract_text(filename):
+    '''Grabs text from Gutenberg Project and takes out unnecesary words'''
     start = timer()
     file = open(filename, encoding='utf-8', errors='ignore')
     fileLines = []
@@ -36,6 +38,7 @@ def extract_text(filename):
     print("File processed in " + str((end-start)/1000) + " seconds")
 
 def prepend_parent_dir_to_file(filename):
+    '''Prepend file with parent directory name'''
     parent_dir_name = os.path.basename(os.path.dirname(filename))
     with open(filename, "r+") as file:
         content = file.read()

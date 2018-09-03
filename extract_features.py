@@ -7,7 +7,8 @@ from nltk.tokenize import word_tokenize
 
 import config
 from extraction.feature_extraction import (avg_sentence_length, char_ngram,
-                                           freqdist_selection, word_ngram)
+                                           freqdist_selection,
+                                           punctuation_frequency, word_ngram)
 from extraction.file_extraction import filename_to_text, list_filenames
 
 
@@ -98,6 +99,14 @@ def feature_extraction(processed_texts, language):
         [avg_sentence_length(processed_texts[i], tokenized_words[i]) for i in range(len(processed_texts))]
 
     print(lang_name, "Average Sentence Length Time:", time.time() - curr_time)
+    # curr_time = time.time()
+
+    # # Punctuation frequency
+    # punctuation_text_dists = [FreqDist(punctuation_frequency(tokenized_words[i])) for i in range(len(processed_texts))]
+
+    # training_punctuation, punctuation_feature_set = freqdist_selection(punctuation_text_dists, config.ngram_common_words)
+
+    # print(lang_name, "Punctuation Distribution Length Time:", time.time() - curr_time)
 
     return char_ngram_feature_set, training_char_ngrams, \
         word_ngram_feature_set, training_word_ngrams, \
@@ -132,6 +141,8 @@ if __name__ == "__main__":
 
     # Import processed gutenberg texts from folder and place as a list [A, B, ... , C]
     if language >= 0:
+        print("English File and Feature Extraction")
+
         en_processed_texts, en_authors = file_extraction(config.ENGLISH)
 
         # FEATURE EXTRACTION AND ASSEMBLY #
@@ -139,13 +150,15 @@ if __name__ == "__main__":
             en_word_ngram_feature_set, en_training_word_ngrams, \
             en_avg_sentence_length_feature_set = feature_extraction(en_processed_texts, config.ENGLISH)
     
-    # if language <= 0:
-    #     sp_processed_texts, sp_authors = file_extraction(config.SPANISH)
+    if language <= 0:
+        print("Spanish File and Feature Extraction")
+        
+        sp_processed_texts, sp_authors = file_extraction(config.SPANISH)
 
-    #     # FEATURE EXTRACTION AND ASSEMBLY #
-    #     sp_char_ngram_feature_set, sp_training_char_ngrams, \
-    #         sp_word_ngram_feature_set, sp_training_word_ngrams, \
-    #         sp_avg_sentence_length_feature_set = feature_extraction(sp_processed_texts, config.SPANISH)
+        # FEATURE EXTRACTION AND ASSEMBLY #
+        sp_char_ngram_feature_set, sp_training_char_ngrams, \
+            sp_word_ngram_feature_set, sp_training_word_ngrams, \
+            sp_avg_sentence_length_feature_set = feature_extraction(sp_processed_texts, config.SPANISH)
 
     # FILE SAVING #
     t0 = time.time()
@@ -176,36 +189,52 @@ if __name__ == "__main__":
         with open(config.en_authors_path, 'wb') as fid:
             pickle.dump(en_authors, fid)
 
+        # # save english punctuation frequency feature set
+        # with open(config.en_punctuation_feature_set_path, 'wb') as fid:
+        #     pickle.dump(en_punctuation_feature_set, fid)
+
+        # # save english punctuation training used for punctuation frequency
+        # with open(config.en_training_punctuation_path, 'wb') as fid:
+        #     pickle.dump(en_training_punctuation, fid)
+
     # Spanish
-    # if language <= 0:
-    #     # Save spanish training words used for character ngrams
-    #     with open(config.sp_training_char_ngrams_path, 'wb') as fid:
-    #         pickle.dump(sp_training_char_ngrams, fid)
+    if language <= 0:
+        # Save spanish training words used for character ngrams
+        with open(config.sp_training_char_ngrams_path, 'wb') as fid:
+            pickle.dump(sp_training_char_ngrams, fid)
 
-    #     # Save spanish training ngrams used for word ngrams
-    #     with open(config.sp_training_word_ngrams_path, 'wb') as fid:
-    #         pickle.dump(sp_training_word_ngrams, fid)
+        # Save spanish training ngrams used for word ngrams
+        with open(config.sp_training_word_ngrams_path, 'wb') as fid:
+            pickle.dump(sp_training_word_ngrams, fid)
 
-    #     # Save spanish char ngram feature set
-    #     with open(config.sp_char_ngram_feature_set_path, 'wb') as fid:
-    #         pickle.dump(sp_char_ngram_feature_set, fid)
+        # Save spanish char ngram feature set
+        with open(config.sp_char_ngram_feature_set_path, 'wb') as fid:
+            pickle.dump(sp_char_ngram_feature_set, fid)
 
-    #     # Save spanish word ngram feature set
-    #     with open(config.sp_word_ngram_feature_set_path, 'wb') as fid:
-    #         pickle.dump(sp_word_ngram_feature_set, fid)
+        # Save spanish word ngram feature set
+        with open(config.sp_word_ngram_feature_set_path, 'wb') as fid:
+            pickle.dump(sp_word_ngram_feature_set, fid)
 
-    #     # save spanish average sentence length feature set
-    #     with open(config.sp_avg_sentence_length_feature_set_path, 'wb') as fid:
-    #         pickle.dump(sp_avg_sentence_length_feature_set, fid)
+        # save spanish average sentence length feature set
+        with open(config.sp_avg_sentence_length_feature_set_path, 'wb') as fid:
+            pickle.dump(sp_avg_sentence_length_feature_set, fid)
 
-    #     # save english average sentence length feature set
-    #         with open(config.sp_authors_path, 'wb') as fid:
-    #             pickle.dump(sp_authors, fid)
+        # save spanish average sentence length feature set
+            with open(config.sp_authors_path, 'wb') as fid:
+                pickle.dump(sp_authors, fid)
+
+    #     # save spanish punctuation frequency feature set
+    #         with open(config.sp_punctuation_feature_set_path, 'wb') as fid:
+    #             pickle.dump(sp_punctuation_feature_set, fid)
+
+    #     # save spanish punctuation training used for punctuation frequency
+    #         with open(config.sp_training_punctuation_path, 'wb') as fid:
+    #             pickle.dump(sp_training_punctuation, fid)
     
     print("File Save Time:", time.time() - t0)
 
     # Output success
     if language >= 0:
         print(config.EN_NAME, 'features successfully extracted and saved in', time.time() - t1, 'seconds.')
-    # if language <= 0:
-    #     print(config.SP_NAME, 'features successfully extracted and saved in', time.time() - t1, 'seconds.')
+    if language <= 0:
+        print(config.SP_NAME, 'features successfully extracted and saved in', time.time() - t1, 'seconds.')

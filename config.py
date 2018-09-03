@@ -2,6 +2,7 @@
 char_ngram_length = 4  # length of character ngrams
 word_ngram_length = 2  # length of word ngrams
 ngram_common_words = 10000  # how many of the most common ngrams to choose as feature sets  
+punctuation_length = 16  # how many of most common punctuations to choose as feature sets
 normalization_type = 'l2' # approacah for normalisation
 # L1 Least Absolute Deviations, abs(sum of row) = 1, insensitive to outliers
 # L2 Least Squares, sum of squares, on each row = 1, takes outliers into consideration
@@ -18,6 +19,8 @@ en_training_word_ngrams_path = './serialised_objects/en_training_word_ngrams.pkl
 en_char_ngram_feature_set_path = './serialised_objects/en_char_ngram_feature_set.pkl'
 en_word_ngram_feature_set_path = './serialised_objects/en_word_ngram_feature_set.pkl'
 en_avg_sentence_length_feature_set_path = './serialised_objects/en_avg_sentence_length_feature_set.pkl'
+en_punctuation_feature_set_path = './serialised_objects/en_punctuation_feature_set.pkl'
+en_training_punctuation_path = './serialised_objects/en_training_punctuation.pkl'
 
 # Paths for english classifiers and extracted char/word ngrams
 sp_classifier_path = './serialised_objects/sp_classifier.pkl'
@@ -27,6 +30,8 @@ sp_training_word_ngrams_path = './serialised_objects/sp_training_word_ngrams.pkl
 sp_char_ngram_feature_set_path = './serialised_objects/sp_char_ngram_feature_set.pkl'
 sp_word_ngram_feature_set_path = './serialised_objects/sp_word_ngram_feature_set.pkl'
 sp_avg_sentence_length_feature_set_path = './serialised_objects/sp_avg_sentence_length_feature_set.pkl'
+sp_punctuation_feature_set_path = './serialised_objects/sp_punctuation_feature_set.pkl'
+sp_training_punctuation_path = './serialised_objects/sp_training_punctuation.pkl'
 
 # Constants
 SPANISH = -1

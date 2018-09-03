@@ -131,16 +131,10 @@ def ngram_selection(text_distributions, n):
         words.append(top_n_words[i][0])
     return words, word_counts
 
-
-def ngram_test_selection(distribution, words):
-    return [distribution[w] for w in words]
-
 # FREQUENCY DISTRIBUTION FEATURES #
 # [x] Average sentence length
 # [x] Punctuation frequency distribution
 # [] POS tagging and frequency distribution
-
-# TODO punctuation feature extraction
 
 # TODO POS tagging and freq distribution
 
