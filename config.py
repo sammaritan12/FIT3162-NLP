@@ -21,6 +21,7 @@ en_word_ngram_feature_set_path = './serialised_objects/en_word_ngram_feature_set
 en_avg_sentence_length_feature_set_path = './serialised_objects/en_avg_sentence_length_feature_set.pkl'
 en_punctuation_feature_set_path = './serialised_objects/en_punctuation_feature_set.pkl'
 en_training_punctuation_path = './serialised_objects/en_training_punctuation.pkl'
+en_k_folds = 10
 
 # Paths for english classifiers and extracted char/word ngrams
 sp_classifier_path = './serialised_objects/sp_classifier.pkl'
@@ -32,6 +33,7 @@ sp_word_ngram_feature_set_path = './serialised_objects/sp_word_ngram_feature_set
 sp_avg_sentence_length_feature_set_path = './serialised_objects/sp_avg_sentence_length_feature_set.pkl'
 sp_punctuation_feature_set_path = './serialised_objects/sp_punctuation_feature_set.pkl'
 sp_training_punctuation_path = './serialised_objects/sp_training_punctuation.pkl'
+sp_k_folds = 8
 
 # Constants
 SPANISH = -1

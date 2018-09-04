@@ -1,0 +1,5 @@
+TEST: sp Classifier Kernels 2018-09-04_11h-57m-57s-388130ms
+Features:
+- Word N-Grams, Amount: 2, 100
+
+Using L2 Normalisation, Least Squares

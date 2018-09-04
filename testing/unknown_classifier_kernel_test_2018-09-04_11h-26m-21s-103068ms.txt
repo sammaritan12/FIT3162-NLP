@@ -1,0 +1,15 @@
+TEST: sp Classifier Kernels 2018-09-04_11h-26m-21s-103068ms
+Features:
+- Character N-Grams, Amount: 4, 10000
+- Word N-Grams, Amount: 2, 10000
+- Average Sentence Length
+
+Using L2 Normalisation, Least Squares
+Linear SVC Accuracy: 0.76 (+/- 0.17)
+SVC with Linear Kernel Accuracy: 0.45 (+/- 0.21)
+SVC with Poly Kerne lAccuracy: 0.50 (+/- 0.19)
+SVC with rbf Kernel Accuracy: 0.45 (+/- 0.21)
+SVC with Sigmoid Kernel Accuracy: 0.45 (+/- 0.21)
+Gaussian Naive Bayes Accuracy: 0.46 (+/- 0.26)
+Bernoulli Naive Bayes Accuracy: 0.81 (+/- 0.25)
+Multinomial Naive BayesAccuracy: 0.31 (+/- 0.24)

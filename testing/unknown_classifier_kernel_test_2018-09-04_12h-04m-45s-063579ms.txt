@@ -1,0 +1,17 @@
+TEST: en Classifier Kernels 2018-09-04_12h-04m-45s-063579ms
+Features:
+- Character N-Grams, Amount: 4, 10000
+- Word N-Grams, Amount: 2, 10000
+
+Using L2 Normalisation, Least Squares
+Linear SVC Accuracy: 0.88 (+/- 0.23)
+SVC with Linear Kernel Accuracy: 0.73 (+/- 0.31)
+SVC with Poly Kernel Accuracy: 0.76 (+/- 0.30)
+SVC with rbf Kernel Accuracy: 0.73 (+/- 0.31)
+SVC with Sigmoid Kernel Accuracy: 0.73 (+/- 0.31)
+Gaussian Naive Bayes Accuracy: 0.56 (+/- 0.24)
+Bernoulli Naive Bayes Accuracy: 0.85 (+/- 0.20)
+Multinomial Naive Bayes Accuracy: 0.74 (+/- 0.30)
+KNeighbours Accuracy: 0.80 (+/- 0.30)
+Stochastic Gradient Descent Accuracy: 0.45 (+/- 0.31)
+Decision Trees Accuracy: 0.69 (+/- 0.23)
