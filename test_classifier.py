@@ -109,8 +109,8 @@ if __name__ == '__main__':
         with open(config.en_avg_sentence_length_feature_set_path, 'rb') as fid:
             en_avg_sentence_length_feature_set = pickle.load(fid)
 
-        # with open(config.en_punctuation_feature_set_path, 'rb') as fid:
-        #     en_punctuation_feature_set = pickle.load(fid)
+        with open(config.en_punctuation_feature_set_path, 'rb') as fid:
+            en_punctuation_feature_set = pickle.load(fid)
 
 
     # Loading Spanish Features
@@ -127,8 +127,8 @@ if __name__ == '__main__':
         with open(config.sp_avg_sentence_length_feature_set_path, 'rb') as fid:
             sp_avg_sentence_length_feature_set = pickle.load(fid)
 
-        # with open(config.sp_punctuation_feature_set_path, 'rb') as fid:
-        #     sp_punctuation_feature_set = pickle.load(fid)
+        with open(config.sp_punctuation_feature_set_path, 'rb') as fid:
+            sp_punctuation_feature_set = pickle.load(fid)
 
     # FEATURE NORMALIZATION AND NORMALIZATION #
     t0 = time.time()
@@ -138,7 +138,8 @@ if __name__ == '__main__':
         current_features =\
         [(en_char_ngram_feature_set, '- Character N-Grams, Amount: ' + str(config.char_ngram_length) + ', ' + str(config.ngram_common_words) + '\n'),\
         (en_word_ngram_feature_set, '- Word N-Grams, Amount: ' + str(config.word_ngram_length) + ', ' + str(config.ngram_common_words) + '\n'),\
-        (en_avg_sentence_length_feature_set, '- Average Sentence Length\n')]
+        (en_avg_sentence_length_feature_set, '- Average Sentence Length\n'),\
+        (en_punctuation_feature_set, '- Punctutation Frequency')]
 
         # Go through every combination of the features
         for j in range(len(current_features)):
@@ -169,7 +170,8 @@ if __name__ == '__main__':
         current_features =\
         [(sp_char_ngram_feature_set, '- Character N-Grams, Amount: ' + str(config.char_ngram_length) + ', ' + str(config.ngram_common_words) + '\n'),\
         (sp_word_ngram_feature_set, '- Word N-Grams, Amount: ' + str(config.word_ngram_length) + ', ' + str(config.ngram_common_words) + '\n'),\
-        (sp_avg_sentence_length_feature_set, '- Average Sentence Length\n')]
+        (sp_avg_sentence_length_feature_set, '- Average Sentence Length\n'),\
+        (sp_punctuation_feature_set, '- Punctuation Frequency')]
 
         # Go through every combination of the features
         for j in range(len(current_features)):

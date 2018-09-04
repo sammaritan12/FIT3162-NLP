@@ -62,9 +62,9 @@ if __name__ == "__main__":
         with open(config.sp_training_word_ngrams_path, 'rb') as fid:
             training_word_ngrams = pickle.load(fid)
 
-        # # load punctuation used in punctuation frequency
-        # with open(config.sp_training_punctuation_path, 'rb') as fid:
-        #     training_punctuation = pickle.load(fid)
+        # load punctuation used in punctuation frequency
+        with open(config.sp_training_punctuation_path, 'rb') as fid:
+            training_punctuation = pickle.load(fid)
 
     # # Exactly the same as Text A in training data
     # text = '''There were a king with a large jaw and a queen with a plain face, on the
@@ -89,9 +89,9 @@ if __name__ == "__main__":
     # Average sentence length
     avg_sentence_length_feature_set = avg_sentence_length(text, tokenized_word)
 
-    # # Punctuation frequency
-    # punctuation_feature_set = \
-    #     freqdist_test_selection(FreqDist(punctuation_frequency(tokenized_word)), training_punctuation)
+    # Punctuation frequency
+    punctuation_feature_set = \
+        freqdist_test_selection(FreqDist(punctuation_frequency(tokenized_word)), training_punctuation)
 
     # Aggregated feature set
     test_feature_set = char_ngrams_feature_set + word_ngrams_feature_set +\

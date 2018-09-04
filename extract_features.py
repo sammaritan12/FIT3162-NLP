@@ -24,12 +24,15 @@ def file_extraction(language):
     curr_time = time.time()
 
     # lists all text files within the path provided
+    lang_name = 'Unknown'
     # English
     if language == config.ENGLISH:
         file_names = list_filenames(config.en_processed_text_path)
+        lang_name = config.EN_NAME
     # Spanish
     elif language == config.SPANISH:
         file_names = list_filenames(config.sp_processed_text_path)
+        lang_name = config.SP_NAME
 
     # gets file names and converts to strings
     processed_texts = [filename_to_text(i) for i in file_names]
@@ -37,7 +40,7 @@ def file_extraction(language):
     # Extract authors
     authors = [i.splitlines()[0] for i in processed_texts]
 
-    print("Text Import and Author extraction Time:", time.time() - curr_time)
+    print(lang_name, "Text Import and Author extraction Time:", time.time() - curr_time)
 
     return processed_texts, authors
 
@@ -99,18 +102,19 @@ def feature_extraction(processed_texts, language):
         [avg_sentence_length(processed_texts[i], tokenized_words[i]) for i in range(len(processed_texts))]
 
     print(lang_name, "Average Sentence Length Time:", time.time() - curr_time)
-    # curr_time = time.time()
+    curr_time = time.time()
 
-    # # Punctuation frequency
+    # Punctuation frequency
     punctuation_text_dists = [FreqDist(punctuation_frequency(tokenized_words[i])) for i in range(len(processed_texts))]
 
-    training_punctuation, punctuation_feature_set = freqdist_selection(punctuation_text_dists, config.ngram_common_words)
+    training_punctuation, punctuation_feature_set = freqdist_selection(punctuation_text_dists, config.punctuation_length)
 
-    # print(lang_name, "Punctuation Distribution Length Time:", time.time() - curr_time)
+    print(lang_name, "Punctuation Distribution Length Time:", time.time() - curr_time)
 
     return char_ngram_feature_set, training_char_ngrams, \
         word_ngram_feature_set, training_word_ngrams, \
-        avg_sentence_length_feature_set
+        avg_sentence_length_feature_set, \
+        training_punctuation, punctuation_feature_set
 
 
 if __name__ == "__main__":
@@ -148,7 +152,8 @@ if __name__ == "__main__":
         # FEATURE EXTRACTION AND ASSEMBLY #
         en_char_ngram_feature_set, en_training_char_ngrams, \
             en_word_ngram_feature_set, en_training_word_ngrams, \
-            en_avg_sentence_length_feature_set = feature_extraction(en_processed_texts, config.ENGLISH)
+            en_avg_sentence_length_feature_set, \
+            en_training_punctuation, en_punctuation_feature_set = feature_extraction(en_processed_texts, config.ENGLISH)
     
     if language <= 0:
         print("Spanish File and Feature Extraction")
@@ -158,7 +163,8 @@ if __name__ == "__main__":
         # FEATURE EXTRACTION AND ASSEMBLY #
         sp_char_ngram_feature_set, sp_training_char_ngrams, \
             sp_word_ngram_feature_set, sp_training_word_ngrams, \
-            sp_avg_sentence_length_feature_set = feature_extraction(sp_processed_texts, config.SPANISH)
+            sp_avg_sentence_length_feature_set, \
+            sp_training_punctuation, sp_punctuation_feature_set = feature_extraction(sp_processed_texts, config.SPANISH)
 
     # FILE SAVING #
     t0 = time.time()
@@ -189,13 +195,13 @@ if __name__ == "__main__":
         with open(config.en_authors_path, 'wb') as fid:
             pickle.dump(en_authors, fid)
 
-        # # save english punctuation frequency feature set
-        # with open(config.en_punctuation_feature_set_path, 'wb') as fid:
-        #     pickle.dump(en_punctuation_feature_set, fid)
+        # save english punctuation frequency feature set
+        with open(config.en_punctuation_feature_set_path, 'wb') as fid:
+            pickle.dump(en_punctuation_feature_set, fid)
 
-        # # save english punctuation training used for punctuation frequency
-        # with open(config.en_training_punctuation_path, 'wb') as fid:
-        #     pickle.dump(en_training_punctuation, fid)
+        # save english punctuation training used for punctuation frequency
+        with open(config.en_training_punctuation_path, 'wb') as fid:
+            pickle.dump(en_training_punctuation, fid)
 
     # Spanish
     if language <= 0:
@@ -223,13 +229,13 @@ if __name__ == "__main__":
             with open(config.sp_authors_path, 'wb') as fid:
                 pickle.dump(sp_authors, fid)
 
-    #     # save spanish punctuation frequency feature set
-    #         with open(config.sp_punctuation_feature_set_path, 'wb') as fid:
-    #             pickle.dump(sp_punctuation_feature_set, fid)
+        # save spanish punctuation frequency feature set
+            with open(config.sp_punctuation_feature_set_path, 'wb') as fid:
+                pickle.dump(sp_punctuation_feature_set, fid)
 
-    #     # save spanish punctuation training used for punctuation frequency
-    #         with open(config.sp_training_punctuation_path, 'wb') as fid:
-    #             pickle.dump(sp_training_punctuation, fid)
+        # save spanish punctuation training used for punctuation frequency
+            with open(config.sp_training_punctuation_path, 'wb') as fid:
+                pickle.dump(sp_training_punctuation, fid)
     
     print("File Save Time:", time.time() - t0)
 

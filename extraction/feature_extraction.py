@@ -45,9 +45,9 @@ def freqdist_selection(text_distributions, n):
 
     # get top n words, or size if n > length of merged_dist
     top_n_items = merged_dist.most_common(min(ceil(n), len(merged_dist)))
-
+    
     # Append words and word counts to their lists
-    for i in range(n):
+    for i in range(min(ceil(n), len(merged_dist))):
         for t in range(len(text_distributions)):
             if text_distributions[t][top_n_items[i][0]]:
                 item_counts[t].append(text_distributions[t][top_n_items[i][0]])
@@ -111,26 +111,6 @@ def word_ngram(length, words):
             ngrams.append(" ".join(words[i - length + 1: i + 1]))
     return ngrams
 
-
-def ngram_selection(text_distributions, n):
-    # merge distributions
-    merged_dist = merge_freqdists(text_distributions)
-    # initialise word count list and words
-    words = []
-    word_counts = [[] for _ in range(len(text_distributions))]
-
-    # get top n words, or size if n > length of merged_dist
-    top_n_words = merged_dist.most_common(min(ceil(n), len(merged_dist)))
-    # Append words and word counts to their lists
-    for i in range(n):
-        for t in range(len(text_distributions)):
-            if text_distributions[t][top_n_words[i][0]]:
-                word_counts[t].append(text_distributions[t][top_n_words[i][0]])
-            else:
-                word_counts[t].append(0)
-        words.append(top_n_words[i][0])
-    return words, word_counts
-
 # FREQUENCY DISTRIBUTION FEATURES #
 # [x] Average sentence length
 # [x] Punctuation frequency distribution
@@ -152,6 +132,7 @@ def avg_sentence_length(text, words):
 
 def punctuation_frequency(tokenised_words):
     punctuation_set = [".", "?", "!", ",", ";", ":", "−", "-", "[", "]", "{", "}", "(", ")", "'", "\""]
+
     # initialise word count list and words
     result = []
 
