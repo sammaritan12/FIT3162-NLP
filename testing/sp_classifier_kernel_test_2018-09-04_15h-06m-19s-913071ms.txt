@@ -1,0 +1,23 @@
+TEST: Spanish Classifier Kernels 2018-09-04_15h-06m-19s-913071ms
+
+Features:
+- Character N-Grams, Amount: 4, 100
+- Punctuation Frequency
+Using L2 Normalisation, Least Squares
+
+Linear SVC Accuracy: 0.69 (+/- 0.15)
+SVC with Linear Kernel Accuracy: 0.36 (+/- 0.13)
+SVC with Poly Kernel Accuracy: 0.37 (+/- 0.22)
+SVC with rbf Kernel Accuracy: 0.36 (+/- 0.13)
+SVC with Sigmoid Kernel Accuracy: 0.36 (+/- 0.13)
+Gaussian Naive Bayes Accuracy: 0.68 (+/- 0.36)
+Bernoulli Naive Bayes Accuracy: 0.19 (+/- 0.11)
+Multinomial Naive Bayes Accuracy: 0.32 (+/- 0.16)
+KNeighbours Accuracy: 0.55 (+/- 0.24)
+Multi-Layer Perceptron Accuracy: 0.63 (+/- 0.32)
+Stochastic Gradient Descent Accuracy: 0.31 (+/- 0.12)
+Decision Trees Accuracy: 0.53 (+/- 0.23)
+Gaussian Process Accuracy: 0.39 (+/- 0.23)
+Random Forest Accuracy: 0.79 (+/- 0.28)
+AdaBoost Accuracy: 0.17 (+/- 0.10)
+Quadratic Discriminant Analysis Accuracy: 0.21 (+/- 0.19)
