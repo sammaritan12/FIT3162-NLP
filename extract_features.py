@@ -102,9 +102,9 @@ def feature_extraction(processed_texts, language):
     # curr_time = time.time()
 
     # # Punctuation frequency
-    # punctuation_text_dists = [FreqDist(punctuation_frequency(tokenized_words[i])) for i in range(len(processed_texts))]
+    punctuation_text_dists = [FreqDist(punctuation_frequency(tokenized_words[i])) for i in range(len(processed_texts))]
 
-    # training_punctuation, punctuation_feature_set = freqdist_selection(punctuation_text_dists, config.ngram_common_words)
+    training_punctuation, punctuation_feature_set = freqdist_selection(punctuation_text_dists, config.ngram_common_words)
 
     # print(lang_name, "Punctuation Distribution Length Time:", time.time() - curr_time)
 

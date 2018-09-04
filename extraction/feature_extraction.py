@@ -1,4 +1,4 @@
-from nltk import sent_tokenize, FreqDist
+from nltk import word_tokenize, sent_tokenize, FreqDist
 from math import ceil
 
 # Assumptions:
@@ -150,18 +150,12 @@ def avg_sentence_length(text, words):
     return len(words) / len(sentences)
 
 
-def punctuation_frequency(text_distributions):
+def punctuation_frequency(tokenised_words):
     punctuation_set = [".", "?", "!", ",", ";", ":", "−", "-", "[", "]", "{", "}", "(", ")", "'", "\""]
     # initialise word count list and words
-    words = []
-    word_counts = [[] for _ in range(len(text_distributions))]
+    result = []
 
-    # Append words and word counts to their lists
-    for i in range(len(punctuation_set)):
-        for t in range(len(text_distributions)):
-            if text_distributions[t][punctuation_set[i][0]]:
-                word_counts[t].append(text_distributions[t][punctuation_set[i][0]])
-            else:
-                word_counts[t].append(0)
-        words.append(punctuation_set[i])
-    return words, word_counts
+    for word in tokenised_words:
+        if word in punctuation_set:
+            result.append(word)
+    return result
