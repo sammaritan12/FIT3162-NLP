@@ -1,5 +1,0 @@
-TEST: en Classifier Kernels 2018-09-04_12h-00m-52s-387371ms
-Features:
-- Character N-Grams, Amount: 4, 100
-
-Using L2 Normalisation, Least Squares

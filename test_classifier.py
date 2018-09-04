@@ -3,6 +3,7 @@ import time
 from datetime import datetime
 from itertools import combinations
 from sys import argv
+import warnings
 
 from sklearn.linear_model import SGDClassifier
 from sklearn.model_selection import cross_val_score
@@ -37,18 +38,25 @@ def test_classifier_kernels(authors, features_normalized, features_text, languag
     lang_name = 'unknown'
 
     if language == config.ENGLISH:
-        lang_name = 'en'
+        lang = 'en'
+        lang_name = config.EN_NAME
     elif language == config.SPANISH:
-        lang_name = 'sp'
+        lang = 'sp'
+        lang_name = config.SP_NAME
 
     output_file = open('./testing/' + lang + '_classifier_kernel_test_' + curr_time + '.txt', 'a+')
-    output_file.write("TEST: " + lang_name + " Classifier Kernels " + curr_time + '\n')
+
+    
+    # Heading file and terminal output
+    print("TEST: " + lang_name + " Classifier Kernels " + curr_time + '\n')
+    output_file.write("TEST: " + lang_name + " Classifier Kernels " + curr_time + '\n\n')
+
+    # Features file and terminal output
+    print("Features:\n" + features_text)
     output_file.write("Features:\n" + features_text +"\n")
 
-    print("TEST: " + lang_name + " Classifier Kernels " + curr_time)
-    print("Features:\n" + features_text)
-
-    output_file.write('Using L2 Normalisation, Least Squares\n')
+    # Normalization file and terminal output
+    output_file.write('Using L2 Normalisation, Least Squares\n\n')
     print('Using', config.normalization_type.upper(), 'Normalisation\n')
 
     classifiers = [(LinearSVC(), 'Linear SVC'), (SVC(kernel='linear'), 'SVC with Linear Kernel'),\
@@ -150,7 +158,11 @@ if __name__ == '__main__':
                     en_training_feature_set.append(curr_feature)
 
                 en_training_feature_set_normalised = normalize(en_training_feature_set, norm=config.normalization_type)
-                test_classifier_kernels(en_authors, en_training_feature_set_normalised, en_feature_text, config.ENGLISH, config.en_k_folds)
+
+                # Test the classifiers, ignores warnings
+                with warnings.catch_warnings():
+                    warnings.simplefilter("ignore")
+                    test_classifier_kernels(en_authors, en_training_feature_set_normalised, en_feature_text, config.ENGLISH, config.en_k_folds)
 
     # Spanish Features
     if language <= 0:
@@ -177,7 +189,9 @@ if __name__ == '__main__':
                     sp_training_feature_set.append(curr_feature)
 
                 sp_training_feature_set_normalised = normalize(sp_training_feature_set, norm=config.normalization_type)
-                test_classifier_kernels(sp_authors, sp_training_feature_set_normalised, sp_feature_text, config.SPANISH, config.sp_k_folds)
+                with warnings.catch_warnings():
+                    warnings.simplefilter("ignore")
+                    test_classifier_kernels(sp_authors, sp_training_feature_set_normalised, sp_feature_text, config.SPANISH, config.sp_k_folds)
 
     print("Zipping and Normalisation Time:", time.time() - t0)
     t0 = time.time()

@@ -1,6 +1,0 @@
-TEST: en Classifier Kernels 2018-09-04_12h-01m-31s-036413ms
-Features:
-- Word N-Grams, Amount: 2, 100
-
-Using L2 Normalisation, Least Squares
-Linear SVC Accuracy: 0.93 (+/- 0.16)
