@@ -11,6 +11,10 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import normalize
 from sklearn.svm import SVC, LinearSVC
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.neural_network import MLPClassifier
+from sklearn.gaussian_process import GaussianProcessClassifier
+from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
+from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 
 import config
 from classifier.english_classifier import english_classifier
@@ -51,9 +55,11 @@ def test_classifier_kernels(authors, features_normalized, features_text, languag
         (SVC(kernel='poly'), 'SVC with Poly Kernel'), (SVC(kernel='rbf'), 'SVC with rbf Kernel'),\
         (SVC(kernel='sigmoid'), 'SVC with Sigmoid Kernel'), (GaussianNB(), 'Gaussian Naive Bayes'),\
         (BernoulliNB(), 'Bernoulli Naive Bayes'), (MultinomialNB(), 'Multinomial Naive Bayes'),\
-        (KNeighborsClassifier(), 'KNeighbours'), \
-        (SGDClassifier(max_iter=5, tol=None), 'Stochastic Gradient Descent'),\
-        (DecisionTreeClassifier(), 'Decision Trees')]
+        (KNeighborsClassifier(), 'KNeighbours'), (MLPClassifier(), 'Multi-Layer Perceptron'),\
+        (SGDClassifier(max_iter=5, tol=None, shuffle=True), 'Stochastic Gradient Descent'),\
+        (DecisionTreeClassifier(), 'Decision Trees'), (GaussianProcessClassifier(), 'Gaussian Process'),\
+        (RandomForestClassifier(), 'Random Forest'), (AdaBoostClassifier(), 'AdaBoost'),\
+        (QuadraticDiscriminantAnalysis(), 'Quadratic Discriminant Analysis')]
 
     for clf, text in classifiers:
         clf_score = cv_classifier_score(clf, features_normalized, authors, k_fold)
