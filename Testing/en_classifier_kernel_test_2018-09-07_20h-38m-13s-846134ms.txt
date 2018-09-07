@@ -1,0 +1,23 @@
+TEST: English Classifier Kernels 2018-09-07_20h-38m-13s-846134ms
+
+Features:
+- Average Sentence Length
+
+Using L2 Normalisation, Least Squares
+
+Linear SVC Accuracy: 0.10 (+/- 0.00)
+SVC with Linear Kernel Accuracy: 0.10 (+/- 0.00)
+SVC with Poly Kernel Accuracy: 0.10 (+/- 0.00)
+SVC with rbf Kernel Accuracy: 0.10 (+/- 0.00)
+SVC with Sigmoid Kernel Accuracy: 0.10 (+/- 0.00)
+Gaussian Naive Bayes Accuracy: 0.10 (+/- 0.00)
+Bernoulli Naive Bayes Accuracy: 0.10 (+/- 0.00)
+Multinomial Naive Bayes Accuracy: 0.10 (+/- 0.00)
+KNeighbours Accuracy: 0.10 (+/- 0.00)
+Multi-Layer Perceptron Accuracy: 0.10 (+/- 0.00)
+Stochastic Gradient Descent Accuracy: 0.10 (+/- 0.00)
+Decision Trees Accuracy: 0.10 (+/- 0.00)
+Gaussian Process Accuracy: 0.20 (+/- 0.00)
+Random Forest Accuracy: 0.10 (+/- 0.00)
+AdaBoost Accuracy: 0.10 (+/- 0.00)
+Quadratic Discriminant Analysis Accuracy: 0.10 (+/- 0.00)
