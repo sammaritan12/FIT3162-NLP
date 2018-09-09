@@ -25,7 +25,6 @@ def cv_classifier_score(classifier, train, target, k_fold):
     cv_score =  cross_val_score(classifier, train, target, cv=k_fold)
     return "Accuracy: %0.2f (+/- %0.2f)" % (cv_score.mean(), cv_score.std() * 2)
 
-
 def test_classifier_kernels(authors, features_normalized, features_text, language, k_fold):
     """
     Creates a text file which outputs the results for english classifier kernel test.

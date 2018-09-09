@@ -11,6 +11,10 @@ normalization_type = 'l2' # approacah for normalisation
 en_processed_text_path = './processed_texts/english'
 sp_processed_text_path = './processed_texts/spanish'
 
+# Paths for best classifiers for further testing
+en_best_classifier_text_path = './best_english_classifiers/best_classifiers.txt'
+sp_best_classifier_text_path = './best_spanish_classifiers/best_classifiers.txt'
+
 # Paths for english classifiers and extracted char/word ngrams
 en_classifier_path = './serialised_objects/en_classifier.pkl'
 en_authors_path = './serialised_objects/en_authors.pkl'
