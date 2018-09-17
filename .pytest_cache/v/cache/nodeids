@@ -1,1 +1,3 @@
-[]
+[
+  "extraction/test_file_extraction.py::test_types"
+]

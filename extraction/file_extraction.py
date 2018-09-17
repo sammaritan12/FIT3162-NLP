@@ -1,13 +1,10 @@
 from glob import glob
-# FILE EXTRACTION #
-# [X] Get filename, convert to text
-# [X] Get file names of all files into list
-# [x] Find way to get author from text (Amelia)
-# [] Convert all text files in folder to 2 lists (texts and authors)
-
 
 def filename_to_text(filename):
     """Given filename, convert to a string and return string"""
+    if type(filename) is not str:
+        raise TypeError('Filename must be a string')
+
     file_object = open(filename, 'r')
     text = file_object.read()
     file_object.close()
@@ -15,4 +12,9 @@ def filename_to_text(filename):
 
 
 def list_filenames(dirpath):
+    if type(dirpath) is not str:
+        raise TypeError('dirpath must be a string')
+
     return glob(dirpath + '/**/*.txt', recursive=True)
+
+print(list_filenames('this dont exist'))

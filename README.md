@@ -68,7 +68,7 @@ If no errors occur, then it's installed correctly.
 
 ## How to test the project ##
 
-Navigate to project folder and type `pytest` in your terminal/command line.
+Navigate to project folder and type `python -m unittest` in your terminal/command line.
 
 ## File and folder structure
 

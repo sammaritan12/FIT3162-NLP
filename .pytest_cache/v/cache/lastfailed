@@ -1,4 +1,3 @@
 {
-  "experiment_texts/test1.txt": true,
-  "test_texts/test1.txt": true
+  "extraction/test_file_extraction.py::test_types": true
 }

@@ -19,9 +19,16 @@ def merge_freqdists(freq_dists):
     Returns
     - merged_freqs , a FreqDist of the joined freq_dists
     """
+    if type(freq_dists) is not list:
+        raise TypeError("freq_dists must be a list of FreqDists")
+
     merged_freqs = FreqDist()
     if len(freq_dists) > 1:
         for i in range(len(freq_dists)):
+
+            if type(freq_dists[i]) is not FreqDist:
+                raise ValueError("Each item in list must be FreqDist")
+
             merged_freqs += freq_dists[i]
             
     return merged_freqs
@@ -131,12 +138,18 @@ def avg_sentence_length(text, words):
 
 
 def punctuation_frequency(tokenised_words):
+    if type(tokenised_words) is not list:
+        raise TypeError('Input must be a list of strings')
+
     punctuation_set = [".", "?", "!", ",", ";", ":", "−", "-", "[", "]", "{", "}", "(", ")", "'", "\""]
 
     # initialise word count list and words
     result = []
 
     for word in tokenised_words:
+        if type(word) is not str:
+            raise ValueError('Each list item must be a string')
+
         if word in punctuation_set:
             result.append(word)
     return result
