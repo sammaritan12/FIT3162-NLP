@@ -2,3 +2,7 @@
 /.pytest_cache/
 /.vscode/
 /__pycache__/
+/classifier/__pycache__/
+/extraction/__pycache__/
+/extraction/.pytest_cache/
+/processed_texts/__pycache__/
