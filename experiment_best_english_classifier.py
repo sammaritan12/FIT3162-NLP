@@ -15,7 +15,7 @@ from sklearn.gaussian_process import GaussianProcessClassifier
 from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
 from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 
-from test_classifier import cv_classifier_score
+from experiment_classifier import cv_classifier_score
 
 curr_time = datetime.now().strftime("%Y-%m-%d_%Hh-%Mm-%Ss-%fms")
 

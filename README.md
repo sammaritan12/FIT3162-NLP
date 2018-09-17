@@ -15,7 +15,7 @@ I'm a Final Year Get Me Out of Here
 Go to your commandline/terminal and type the following command:
 
 ```bash
-pip install -U numpy scipy scikit-learn nltk
+pip install -U numpy scipy scikit-learn nltk pytest
 ```
 
 If you are using a unix system, use `pip3` command
@@ -65,6 +65,10 @@ If no errors occur, then it's installed correctly.
     ```bash
     python main.py file.txt english|spanish
     ```
+
+## How to test the project ##
+
+Navigate to project folder and type `pytest` in your terminal/command line.
 
 ## File and folder structure
 
@@ -124,11 +128,11 @@ Python file which given a folder name within that current directory will strip a
 
 Folder containing serialised objects (ie. variables saved as files) which can be loaded again without having to re-extract any other features
 
-### test_texts folder
+### experiment_texts folder
 
 Test texts used to test the accuracy of the classifier as well as testing if the functions work as intended. These texts are not part of the corpus and are considered out of the training data.
 
-### testing folder
+### experiment_results folder
 
 Folder containing the logs and results of testing from test_classifier.py, but also other manually tested items. This just contains raw data automaticallly/manually generated.
 
@@ -152,6 +156,14 @@ Python file temporarily created to test how the tkinter GUI library is used and 
 
 Python file which is currently standing in place of a GUI which lets a user input any Gutenberg text, extract the features, load the classifier, and then makes a prediction on what author it is from.
 
-### test_classifier.py
+### experiment_classifier.py
 
 Python file used to test the accuracy of classifiers and features. Combinatorically tests all the combinations of features and and tests them with all the classifiers to test which classifier is the most accurate for our testing purposes.
+
+### experiment_best_english_classifier.py
+
+Python file used to test the accuracy of the best english classifiers and features. Combinatorically tests all the combinations of features and and tests them with all the classifiers to test which classifier is the most accurate for our testing purposes.
+
+### best_english_classifiers folder
+
+Folder directory containing all experiments in finding the best english classifiers and their settings

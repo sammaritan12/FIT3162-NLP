@@ -43,7 +43,7 @@ def test_classifier_kernels(authors, features_normalized, features_text, languag
         lang = 'sp'
         lang_name = config.SP_NAME
 
-    output_file = open('./testing/' + lang + '_classifier_kernel_test_' + curr_time + '.txt', 'a+')
+    output_file = open('./experiment_results/' + lang + '_classifier_kernel_test_' + curr_time + '.txt', 'a+')
 
     
     # Heading file and terminal output
