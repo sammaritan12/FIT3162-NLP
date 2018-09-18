@@ -1,27 +1,33 @@
 import pickle
 import time
+import warnings
 from datetime import datetime
 from itertools import combinations
 from sys import argv
-import warnings
 
+from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
+from sklearn.ensemble import AdaBoostClassifier, RandomForestClassifier
+from sklearn.gaussian_process import GaussianProcessClassifier
 from sklearn.linear_model import SGDClassifier
 from sklearn.model_selection import cross_val_score
 from sklearn.naive_bayes import BernoulliNB, GaussianNB, MultinomialNB
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import normalize
 from sklearn.svm import SVC, LinearSVC
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.neural_network import MLPClassifier
-from sklearn.gaussian_process import GaussianProcessClassifier
-from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
-from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 
 import config
 from classifier.english_classifier import english_classifier
 
 
 def cv_classifier_score(classifier, train, target, k_fold):
+    if type(k_fold) is not int:
+        raise TypeError("k_fold must be an integer")
+    
+    if k_fold <= 0:
+        raise ValueError("k_fold must be a positive integer")
+
     cv_score =  cross_val_score(classifier, train, target, cv=k_fold)
     return "Accuracy: %0.2f (+/- %0.2f)" % (cv_score.mean(), cv_score.std() * 2)
 
@@ -32,6 +38,15 @@ def test_classifier_kernels(authors, features_normalized, features_text, languag
     - features_normalized, normalized feature set to be used by the classifier
     - features_text, text of what is included in the feature set being passed
     """
+    if type(features_text) is not str:
+        raise TypeError("features_text should be a string of features")
+
+    if type(language) is not int:
+        raise TypeError("language should an integer")
+
+    if language is not config.ENGLISH or language is not config.SPANISH:
+        raise ValueError("language should either be config.SPANISH or config.ENGLISH")
+
     curr_time = datetime.now().strftime("%Y-%m-%d_%Hh-%Mm-%Ss-%fms")
     lang = 'unknown'
     lang_name = 'unknown'

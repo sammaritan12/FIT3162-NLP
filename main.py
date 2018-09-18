@@ -95,7 +95,7 @@ if __name__ == "__main__":
 
     # Aggregated feature set
     test_feature_set = char_ngrams_feature_set + word_ngrams_feature_set +\
-        [avg_sentence_length_feature_set]
+        [avg_sentence_length_feature_set] + punctuation_feature_set
 
     # Normalise feature set
     test_feature_set_normalised = normalize([test_feature_set], norm=config.normalization_type)

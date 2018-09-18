@@ -20,6 +20,9 @@ def file_extraction(language):
     Also returns authors, in the same order of texts
     [Author of A, Author of B, ... , Author C]
     """
+    if language != config.ENGLISH or language != config.SPANISH:
+        raise ValueError("language must either be config.ENGLISH or config.SPANISH")
+
     # FILE EXTRACTION #
     curr_time = time.time()
 
@@ -62,6 +65,15 @@ def feature_extraction(processed_texts, language):
     - training_word_ngrams , word ngrams used to assemble word ngram frequencies in training feature set
     - training_char_ngrams , character ngrams used to assemble character ngram frequencies in training feature set
     """
+    if language != config.ENGLISH and language != config.SPANISH:
+        raise ValueError("language must either be config.ENGLISH or config.SPANISH")
+
+    if type(processed_texts) is not list:
+        raise TypeError("processed_texts must be a list of strings")
+
+    if not all(isinstance(x, str) for x in processed_texts):
+        raise ValueError("words must be a list of strings")
+
     if language == config.ENGLISH:
         lang_name = config.EN_NAME
     elif language == config.SPANISH:
