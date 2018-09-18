@@ -5,12 +5,6 @@ from math import ceil
 # - clean preprocessed data is a text file containing text only
 # - extraction will be done using NLTK
 
-# FREQDIST AUXILIARY FUNCTIONS #
-# [x] Merge multiple frequency distributions
-# [x] Select n most common items from frequency distributions
-# [x] Find n most common items for each frequency distribution from aggregated set
-
-
 def merge_freqdists(freq_dists):
     """
     Merge multiple frequency lists together
@@ -19,6 +13,7 @@ def merge_freqdists(freq_dists):
     Returns
     - merged_freqs , a FreqDist of the joined freq_dists
     """
+    # check types
     if type(freq_dists) is not list:
         raise TypeError("freq_dists must be a list of FreqDists")
 
@@ -38,11 +33,25 @@ def freqdist_selection(text_distributions, n):
     """
     Selects the most common n words from text_distributions
     - text_distributions, list of FreqDists [A, B, ... , C]
+    - n, positive integer in 
 
     Returns
     - item , list containing actual values [A, B, ... , C]
     - item_counts , list containing counts of items [A count, B count, ... , C count]
     """
+    # tpye and value checking
+    if type(text_distributions) is not list:
+        raise TypeError("text_distributions must be a list of FreqDists")
+
+    if type(n) is not int:
+        raise TypeError("N must be a integer")
+
+    if n <= 0:
+        raise ValueError("n must be a natural integer")
+
+    if not all(isinstance(x, FreqDist) for x in text_distributions):
+        raise ValueError("text_distribution must be a list of FreqDist data type")
+
     # merge distributions
     merged_dist = merge_freqdists(text_distributions)
 
@@ -69,11 +78,17 @@ def freqdist_test_selection(distribution, items):
     """
     Selects item counts from distribution and places into a simple list
     """
-    return [distribution[i] for i in items]
+    # type and value checking
+    if type(distribution) is not FreqDist:
+        raise TypeError("distribution must be a FreqDist data type")
 
-# NGRAM FEATURE EXTRACTION #
-# [x] Create character ngrams from list of words
-# [x] Create word ngrams from list of words
+    if type(items) is not list:
+        raise TypeError("items must be a list")
+
+    if not all(isinstance(x, str) for x in items):
+        raise ValueError("items must be a list of strings")        
+
+    return [distribution[i] for i in items]
 
 
 def char_ngram(length, words):
@@ -86,6 +101,19 @@ def char_ngram(length, words):
     Returns
     - ngrams , list of character ngrams within the text
     """
+    # type and value checking
+    if type(length) is not int:
+        raise TypeError("Length must be an integer")
+
+    if type(words) is not list:
+        raise TypeError("Words must be a list of strings")
+
+    if not all(isinstance(x, str) for x in words):
+        raise ValueError("All items in words must be strings")
+
+    if length <= 0:
+        raise ValueError("Length must be a positive integer")
+
     ngrams = []
     for i in words:
         # if words is less than or equal to length, it is already an n-gram
@@ -108,6 +136,20 @@ def word_ngram(length, words):
     Returns
     - ngrams , list of word ngrams within the text
     """
+    # type and value checking
+    if type(length) is not int:
+        raise TypeError("Length must be an integer")
+
+    if type(words) is not list:
+        raise TypeError("Words must be a list of strings")
+
+    if not all(isinstance(x, str) for x in words):
+        raise ValueError("All items in words must be strings")
+
+    if length <= 0:
+        raise ValueError("Length must be a positive integer")
+
+
     ngrams = []
     # if words is less than or equal to length, it is already an n-gram
     if len(words) <= length:
@@ -118,19 +160,26 @@ def word_ngram(length, words):
             ngrams.append(" ".join(words[i - length + 1: i + 1]))
     return ngrams
 
-# FREQUENCY DISTRIBUTION FEATURES #
-# [x] Average sentence length
-# [x] Punctuation frequency distribution
-# [] POS tagging and frequency distribution
-
-# TODO POS tagging and freq distribution
-
 
 def avg_sentence_length(text, words):
     """
     Returns the median sentence length of a text
     - text is represented as a string 'text'
+    - words, tokenised list of strings within the text
     """
+    # type and value checking
+    if type(text) is not str:
+        raise TypeError("Text must be a string")
+
+    if type(words) is not list:
+        raise TypeError("words must be a list")
+
+    if len(text) <= 0:
+        raise ValueError("text must be a nonempty string")
+
+    if not all(isinstance(x, str) for x in words):
+        raise ValueError("words must be a list of strings")
+
     sentences = sent_tokenize(text)
     # words = word_tokenize(text)
 
@@ -138,6 +187,7 @@ def avg_sentence_length(text, words):
 
 
 def punctuation_frequency(tokenised_words):
+    # type and value checking
     if type(tokenised_words) is not list:
         raise TypeError('Input must be a list of strings')
 
