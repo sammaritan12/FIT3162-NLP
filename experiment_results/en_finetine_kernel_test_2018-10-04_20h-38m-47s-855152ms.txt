@@ -1,0 +1,22 @@
+Test: English Finetuning Kernels2018-10-04_20h-38m-47s-855152ms
+Feature/s: Character Ngrams
+Default
+Accuracy: 0.84 (+/- 0.27)
+
+Loss: Hinge
+Accuracy: 0.84 (+/- 0.22)
+
+Feature/s: Word Ngrams
+Default
+Accuracy: 0.86 (+/- 0.24)
+
+Loss: Hinge
+Accuracy: 0.86 (+/- 0.20)
+
+Feature/s: Character Ngrams, Word Ngrams
+Default
+Accuracy: 0.83 (+/- 0.27)
+
+Loss: Hinge
+Accuracy: 0.84 (+/- 0.24)
+

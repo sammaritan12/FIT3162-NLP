@@ -1,0 +1,13 @@
+Test: EnglishFinetuning Kernels2018-10-04_20h-26m-59s-523488ms
+Feature/s:Character Ngrams
+Default
+Accuracy: 0.84 (+/- 0.27)
+
+Feature/s:Word Ngrams
+Default
+Accuracy: 0.86 (+/- 0.24)
+
+Feature/s:Character Ngrams, Word Ngrams
+Default
+Accuracy: 0.83 (+/- 0.27)
+

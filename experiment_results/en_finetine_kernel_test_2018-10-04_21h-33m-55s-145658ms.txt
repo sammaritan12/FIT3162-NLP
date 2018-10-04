@@ -1,0 +1,40 @@
+Test: English Finetuning Kernels2018-10-04_21h-33m-55s-145658ms
+Feature/s: Character Ngrams
+Default
+Accuracy: 0.87 (+/- 0.22)
+
+Min Sample Leaf: 2
+Accuracy: 0.86 (+/- 0.22)
+
+Min Sample Leaf: 10
+Accuracy: 0.77 (+/- 0.24)
+
+Min Sample Leaf: 50
+Accuracy: 0.10 (+/- 0.00)
+
+Feature/s: Word Ngrams
+Default
+Accuracy: 0.82 (+/- 0.22)
+
+Min Sample Leaf: 2
+Accuracy: 0.81 (+/- 0.26)
+
+Min Sample Leaf: 10
+Accuracy: 0.73 (+/- 0.16)
+
+Min Sample Leaf: 50
+Accuracy: 0.10 (+/- 0.00)
+
+Feature/s: Character Ngrams, Word Ngrams
+Default
+Accuracy: 0.92 (+/- 0.15)
+
+Min Sample Leaf: 2
+Accuracy: 0.89 (+/- 0.23)
+
+Min Sample Leaf: 10
+Accuracy: 0.81 (+/- 0.19)
+
+Min Sample Leaf: 50
+Accuracy: 0.10 (+/- 0.00)
+

@@ -1,0 +1,5 @@
+Test: EnglishFinetuning Kernels2018-10-04_20h-25m-15s-794605ms
+Feature/s:Character Ngrams
+Default
+Accuracy: 0.84 (+/- 0.27)
+Penalty: l1

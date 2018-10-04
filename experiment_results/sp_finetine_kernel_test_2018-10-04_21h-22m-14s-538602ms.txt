@@ -1,0 +1,31 @@
+Test: Spanish Finetuning Kernels2018-10-04_21h-22m-14s-538602ms
+Feature/s: Character Ngrams
+Default
+Accuracy: 0.82 (+/- 0.20)
+
+N Estimators: 100
+Accuracy: 0.87 (+/- 0.20)
+
+N Estimators: 100, Max Features: None
+Accuracy: 0.86 (+/- 0.21)
+
+Feature/s: Word Ngrams
+Default
+Accuracy: 0.84 (+/- 0.19)
+
+N Estimators: 100
+Accuracy: 0.89 (+/- 0.16)
+
+N Estimators: 100, Max Features: None
+Accuracy: 0.84 (+/- 0.20)
+
+Feature/s: Character Ngrams, Word Ngrams
+Default
+Accuracy: 0.80 (+/- 0.20)
+
+N Estimators: 100
+Accuracy: 0.89 (+/- 0.19)
+
+N Estimators: 100, Max Features: None
+Accuracy: 0.87 (+/- 0.12)
+

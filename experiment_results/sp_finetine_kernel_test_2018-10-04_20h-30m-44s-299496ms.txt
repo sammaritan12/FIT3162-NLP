@@ -1,0 +1,10 @@
+Test: Spanish Finetuning Kernels2018-10-04_20h-30m-44s-299496ms
+Feature/s: Character Ngrams
+Multiclass: Crammer Singer
+Accuracy: 0.74 (+/- 0.20)
+Feature/s: Word Ngrams
+Multiclass: Crammer Singer
+Accuracy: 0.86 (+/- 0.16)
+Feature/s: Character Ngrams, Word Ngrams
+Multiclass: Crammer Singer
+Accuracy: 0.75 (+/- 0.19)

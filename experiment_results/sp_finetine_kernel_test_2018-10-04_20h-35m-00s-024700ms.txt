@@ -1,0 +1,49 @@
+Test: Spanish Finetuning Kernels2018-10-04_20h-35m-00s-024700ms
+Feature/s: Character Ngrams
+C: 0.25
+Accuracy: 0.55 (+/- 0.23)
+
+C: 0.5
+Accuracy: 0.67 (+/- 0.14)
+
+C: 2.0
+Accuracy: 0.74 (+/- 0.19)
+
+C: 5.0
+Accuracy: 0.80 (+/- 0.14)
+
+C: 10.0
+Accuracy: 0.84 (+/- 0.14)
+
+Feature/s: Word Ngrams
+C: 0.25
+Accuracy: 0.79 (+/- 0.21)
+
+C: 0.5
+Accuracy: 0.84 (+/- 0.13)
+
+C: 2.0
+Accuracy: 0.90 (+/- 0.14)
+
+C: 5.0
+Accuracy: 0.92 (+/- 0.12)
+
+C: 10.0
+Accuracy: 0.92 (+/- 0.12)
+
+Feature/s: Character Ngrams, Word Ngrams
+C: 0.25
+Accuracy: 0.59 (+/- 0.19)
+
+C: 0.5
+Accuracy: 0.69 (+/- 0.15)
+
+C: 2.0
+Accuracy: 0.76 (+/- 0.18)
+
+C: 5.0
+Accuracy: 0.83 (+/- 0.13)
+
+C: 10.0
+Accuracy: 0.86 (+/- 0.14)
+

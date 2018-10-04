@@ -1,0 +1,58 @@
+Test: English Finetuning Kernels2018-10-04_21h-16m-09s-499462ms
+Feature/s: Character Ngrams
+Default
+Accuracy: 0.81 (+/- 0.23)
+
+N Estimators: 20
+Accuracy: 0.75 (+/- 0.33)
+
+N Estimators: 20
+Accuracy: 0.88 (+/- 0.15)
+
+N Estimators: 50
+Accuracy: 0.93 (+/- 0.16)
+
+N Estimators: 100
+Accuracy: 0.94 (+/- 0.13)
+
+N Estimators: 200
+Accuracy: 0.95 (+/- 0.16)
+
+Feature/s: Word Ngrams
+Default
+Accuracy: 0.82 (+/- 0.25)
+
+N Estimators: 20
+Accuracy: 0.74 (+/- 0.30)
+
+N Estimators: 20
+Accuracy: 0.90 (+/- 0.15)
+
+N Estimators: 50
+Accuracy: 0.91 (+/- 0.17)
+
+N Estimators: 100
+Accuracy: 0.93 (+/- 0.20)
+
+N Estimators: 200
+Accuracy: 0.91 (+/- 0.17)
+
+Feature/s: Character Ngrams, Word Ngrams
+Default
+Accuracy: 0.90 (+/- 0.20)
+
+N Estimators: 20
+Accuracy: 0.84 (+/- 0.20)
+
+N Estimators: 20
+Accuracy: 0.91 (+/- 0.17)
+
+N Estimators: 50
+Accuracy: 0.95 (+/- 0.13)
+
+N Estimators: 100
+Accuracy: 0.94 (+/- 0.18)
+
+N Estimators: 200
+Accuracy: 0.96 (+/- 0.13)
+

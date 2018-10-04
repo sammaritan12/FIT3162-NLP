@@ -1,0 +1,22 @@
+Test: Spanish Finetuning Kernels2018-10-04_20h-38m-50s-082198ms
+Feature/s: Character Ngrams
+Default
+Accuracy: 0.72 (+/- 0.18)
+
+Loss: Hinge
+Accuracy: 0.77 (+/- 0.20)
+
+Feature/s: Word Ngrams
+Default
+Accuracy: 0.89 (+/- 0.12)
+
+Loss: Hinge
+Accuracy: 0.86 (+/- 0.11)
+
+Feature/s: Character Ngrams, Word Ngrams
+Default
+Accuracy: 0.72 (+/- 0.18)
+
+Loss: Hinge
+Accuracy: 0.77 (+/- 0.22)
+

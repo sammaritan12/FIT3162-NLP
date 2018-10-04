@@ -1,0 +1,3 @@
+Test: EnglishFinetuning Kernels2018-10-04_20h-22m-26s-684155ms
+Feature/s:Character Ngrams
+Default

@@ -1,0 +1,6 @@
+Test: English Finetuning Kernels2018-10-04_21h-36m-28s-204681ms
+Feature/s: Character Ngrams
+Default
+Accuracy: 0.86 (+/- 0.13)
+
+Min Sample Split: 1

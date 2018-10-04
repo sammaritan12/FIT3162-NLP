@@ -1,0 +1,13 @@
+Test: Spanish Finetuning Kernels2018-10-04_20h-29m-36s-799030ms
+Feature/s: Character Ngrams
+Max Iteration: 2000
+
+Accuracy: 0.72 (+/- 0.18)
+Feature/s: Word Ngrams
+Max Iteration: 2000
+
+Accuracy: 0.89 (+/- 0.12)
+Feature/s: Character Ngrams, Word Ngrams
+Max Iteration: 2000
+
+Accuracy: 0.72 (+/- 0.18)

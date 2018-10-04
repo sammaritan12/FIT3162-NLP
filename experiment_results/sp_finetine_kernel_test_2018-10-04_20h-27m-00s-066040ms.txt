@@ -1,0 +1,13 @@
+Test: SpanishFinetuning Kernels2018-10-04_20h-27m-00s-066040ms
+Feature/s:Character Ngrams
+Default
+Accuracy: 0.72 (+/- 0.18)
+
+Feature/s:Word Ngrams
+Default
+Accuracy: 0.89 (+/- 0.12)
+
+Feature/s:Character Ngrams, Word Ngrams
+Default
+Accuracy: 0.72 (+/- 0.18)
+

@@ -1,0 +1,3 @@
+Test: English Finetuning Kernels2018-10-04_20h-28m-30s-416623ms
+Feature/s: Character Ngrams
+Penalty: l1
