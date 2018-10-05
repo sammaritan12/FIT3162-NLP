@@ -1,0 +1,42 @@
+Test: English Finetuning Kernels2018-10-05_12h-19m-42s-921518ms
+Feature/s: Character Ngrams
+Classifier: LinearSVC
+Default
+Accuracy: 0.84 (+/- 0.27)
+
+max_iter: 1500
+Accuracy: 0.84 (+/- 0.27)
+
+max_iter: 2000
+Accuracy: 0.84 (+/- 0.27)
+
+max_iter: 3000
+Accuracy: 0.84 (+/- 0.27)
+
+multi_class: crammer_singer
+Accuracy: 0.84 (+/- 0.27)
+
+C: 0.25
+Accuracy: 0.84 (+/- 0.27)
+
+C: 0.5
+Accuracy: 0.84 (+/- 0.27)
+
+C: 2
+Accuracy: 0.84 (+/- 0.27)
+
+C: 5
+Accuracy: 0.84 (+/- 0.27)
+
+C: 10
+Accuracy: 0.84 (+/- 0.27)
+
+C: 20
+Accuracy: 0.84 (+/- 0.27)
+
+loss: hinge
+Accuracy: 0.84 (+/- 0.27)
+
+Default
+Accuracy: 0.84 (+/- 0.20)
+

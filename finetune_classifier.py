@@ -65,15 +65,15 @@ def test_linearsvc(train, target, output_file, k_folds):
 
     params = {
         'max_iter' : [1500, 2000, 3000],
-        'multi_class' : ['crammer_singer']
-        'C' : [0.25, 0.5, 2, 5, 10, 20]
+        'multi_class' : ['crammer_singer'],
+        'C' : [0.25, 0.5, 2, 5, 10, 20],
         'loss' : ['hinge']
 
     }
     
     for field in params:
         for test_val in params[field]:
-            clf = LinearSVC()
+            clf = RandomForestClassifier()
             print_write(output_file, field + ': ' + str(test_val))
             output = cv_classifier_score(clf, train, target, k_folds)
             print_write(output_file, output + '\n')
@@ -86,7 +86,7 @@ def test_randomforest(train, target, output_file, k_folds):
     print_write(output_file, output + '\n')
 
     params = {
-        'n estimators' : [5,20,50,100,200],
+        'n_estimators' : [5,20,50,100,200],
         'max_features': [None, 'log2'],
         'min_samples_leaf' : [2, 10, 25, 50],
         'min_samples_split' : [3, 5, 10, 25]}
