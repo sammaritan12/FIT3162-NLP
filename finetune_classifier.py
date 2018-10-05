@@ -56,59 +56,27 @@ def finetune(lang, authors, char_ngrams, word_ngrams):
     output_file.close()
 
 def test_linearsvc(train, target, output_file, k_folds):
-    # print_write(output_file, 'Classifier: LinearSVC')
+    print_write(output_file, 'Classifier: LinearSVC')
 
-    # clf = LinearSVC()
-    # print_write(output_file, 'Default')
-    # output = cv_classifier_score(clf, train, target, k_folds)
-    # print_write(output_file, output + '\n')
+    clf = LinearSVC()
+    print_write(output_file, 'Default')
+    output = cv_classifier_score(clf, train, target, k_folds)
+    print_write(output_file, output + '\n')
+
+    params = {
+        'max_iter' : [1500, 2000, 3000],
+        'multi_class' : ['crammer_singer']
+        'C' : [0.25, 0.5, 2, 5, 10, 20]
+        'loss' : ['hinge']
+
+    }
     
-    # clf = LinearSVC(max_iter=2000)
-    # print_write(output_file, 'Max Iteration: 2000')
-    # output = cv_classifier_score(clf, train, target, k_folds)
-    # print_write(output_file, output + '\n')
-
-    # clf = LinearSVC(multi_class='crammer_singer')
-    # print_write(output_file, 'Multiclass: Crammer Singer')
-    # output = cv_classifier_score(clf, train, target, k_folds)
-    # print_write(output_file, output + '\n')
-
-    # clf = LinearSVC(C=0.25)
-    # print_write(output_file, 'C: 0.25')
-    # output = cv_classifier_score(clf, train, target, k_folds)
-    # print_write(output_file, output + '\n')
-
-    # clf = LinearSVC(C=0.5)
-    # print_write(output_file, 'C: 0.5')
-    # output = cv_classifier_score(clf, train, target, k_folds)
-    # print_write(output_file, output + '\n')
-
-    # clf = LinearSVC(C=2.0)
-    # print_write(output_file, 'C: 2.0')
-    # output = cv_classifier_score(clf, train, target, k_folds)
-    # print_write(output_file, output + '\n')
-
-    # clf = LinearSVC(C=5.0)
-    # print_write(output_file, 'C: 5.0')
-    # output = cv_classifier_score(clf, train, target, k_folds)
-    # print_write(output_file, output + '\n')
-
-    # clf = LinearSVC(C=10.0)
-    # print_write(output_file, 'C: 10.0')
-    # output = cv_classifier_score(clf, train, target, k_folds)
-    # print_write(output_file, output + '\n')
-
-    # clf = LinearSVC(C=20.0)
-    # print_write(output_file, 'C: 20.0')
-    # output = cv_classifier_score(clf, train, target, k_folds)
-    # print_write(output_file, output + '\n')
-
-    # clf = LinearSVC(loss='hinge')
-    # print_write(output_file, 'Loss: Hinge')
-    # output = cv_classifier_score(clf, train, target, k_folds)
-    # print_write(output_file, output + '\n')
-
-    pass
+    for field in params:
+        for test_val in params[field]:
+            clf = LinearSVC()
+            print_write(output_file, field + ': ' + str(test_val))
+            output = cv_classifier_score(clf, train, target, k_folds)
+            print_write(output_file, output + '\n')
 
 
 def test_randomforest(train, target, output_file, k_folds):
@@ -117,73 +85,22 @@ def test_randomforest(train, target, output_file, k_folds):
     output = cv_classifier_score(clf, train, target, k_folds)
     print_write(output_file, output + '\n')
 
-    clf = RandomForestClassifier(n_estimators=5)
-    print_write(output_file, 'N Estimators: 20')
-    output = cv_classifier_score(clf, train, target, k_folds)
-    print_write(output_file, output + '\n')
+    params = {
+        'n estimators' : [5,20,50,100,200],
+        'max_features': [None, 'log2'],
+        'min_samples_leaf' : [2, 10, 25, 50],
+        'min_samples_split' : [3, 5, 10, 25]}
 
-    clf = RandomForestClassifier(n_estimators=20)
-    print_write(output_file, 'N Estimators: 20')
-    output = cv_classifier_score(clf, train, target, k_folds)
-    print_write(output_file, output + '\n')
+    for field in params:
+        for test_val in params[field]:
+            clf = RandomForestClassifier(**{field: test_val})
+            print_write(output_file, field + ': ' + str(test_val))
+            output = cv_classifier_score(clf, train, target, k_folds)
+            print_write(output_file, output + '\n')
 
-    clf = RandomForestClassifier(n_estimators=50)
-    print_write(output_file, 'N Estimators: 50')
-    output = cv_classifier_score(clf, train, target, k_folds)
-    print_write(output_file, output + '\n')
-
-    clf = RandomForestClassifier(n_estimators=100)
-    print_write(output_file, 'N Estimators: 100')
-    output = cv_classifier_score(clf, train, target, k_folds)
-    print_write(output_file, output + '\n')
-
-    clf = RandomForestClassifier(n_estimators=200)
-    print_write(output_file, 'N Estimators: 200')
-    output = cv_classifier_score(clf, train, target, k_folds)
-    print_write(output_file, output + '\n')
-
-    clf = RandomForestClassifier(max_features='log2')
-    print_write(output_file, 'Max Features: Log 2')
-    output = cv_classifier_score(clf, train, target, k_folds)
-    print_write(output_file, output + '\n')
-
-    clf = RandomForestClassifier(max_features=None)
-    print_write(output_file, 'Max Features: None')
-    output = cv_classifier_score(clf, train, target, k_folds)
-    print_write(output_file, output + '\n')
 
     clf = RandomForestClassifier(n_estimators=100, max_features=None)
     print_write(output_file, 'N Estimators: 100, Max Features: None')
-    output = cv_classifier_score(clf, train, target, k_folds)
-    print_write(output_file, output + '\n')
-
-    clf = RandomForestClassifier(min_samples_leaf=2)
-    print_write(output_file, 'Min Sample Leaf: 2')
-    output = cv_classifier_score(clf, train, target, k_folds)
-    print_write(output_file, output + '\n')
-
-    clf = RandomForestClassifier(min_samples_leaf=10)
-    print_write(output_file, 'Min Sample Leaf: 10')
-    output = cv_classifier_score(clf, train, target, k_folds)
-    print_write(output_file, output + '\n')
-
-    clf = RandomForestClassifier(min_samples_leaf=50)
-    print_write(output_file, 'Min Sample Leaf: 50')
-    output = cv_classifier_score(clf, train, target, k_folds)
-    print_write(output_file, output + '\n')
-
-    clf = RandomForestClassifier(min_samples_split=5)
-    print_write(output_file, 'Min Sample Split: 5')
-    output = cv_classifier_score(clf, train, target, k_folds)
-    print_write(output_file, output + '\n')
-
-    clf = RandomForestClassifier(min_samples_split=10)
-    print_write(output_file, 'Min Sample Split: 10')
-    output = cv_classifier_score(clf, train, target, k_folds)
-    print_write(output_file, output + '\n')
-
-    clf = RandomForestClassifier(min_samples_split=25)
-    print_write(output_file, 'Min Sample Split: 25')
     output = cv_classifier_score(clf, train, target, k_folds)
     print_write(output_file, output + '\n')
 

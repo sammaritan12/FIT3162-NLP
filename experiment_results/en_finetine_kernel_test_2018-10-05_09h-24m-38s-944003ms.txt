@@ -1,0 +1,5 @@
+Test: English Finetuning Kernels2018-10-05_09h-24m-38s-944003ms
+Feature/s: Character Ngrams
+Default
+Accuracy: 0.83 (+/- 0.28)
+

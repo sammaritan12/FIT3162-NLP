@@ -1,0 +1,76 @@
+Test: English Finetuning Kernels2018-10-05_09h-25m-41s-483867ms
+Feature/s: Character Ngrams
+Default
+Accuracy: 0.92 (+/- 0.15)
+
+n_estimators: 5
+Accuracy: 0.82 (+/- 0.12)
+
+n_estimators: 20
+Accuracy: 0.89 (+/- 0.19)
+
+n_estimators: 50
+Accuracy: 0.95 (+/- 0.16)
+
+n_estimators: 100
+Accuracy: 0.94 (+/- 0.16)
+
+n_estimators: 200
+Accuracy: 0.95 (+/- 0.16)
+
+max_features: None
+Accuracy: 0.84 (+/- 0.22)
+
+max_features: log2
+Accuracy: 0.77 (+/- 0.24)
+
+Feature/s: Word Ngrams
+Default
+Accuracy: 0.80 (+/- 0.24)
+
+n_estimators: 5
+Accuracy: 0.72 (+/- 0.25)
+
+n_estimators: 20
+Accuracy: 0.89 (+/- 0.21)
+
+n_estimators: 50
+Accuracy: 0.93 (+/- 0.16)
+
+n_estimators: 100
+Accuracy: 0.90 (+/- 0.20)
+
+n_estimators: 200
+Accuracy: 0.89 (+/- 0.21)
+
+max_features: None
+Accuracy: 0.81 (+/- 0.26)
+
+max_features: log2
+Accuracy: 0.75 (+/- 0.22)
+
+Feature/s: Character Ngrams, Word Ngrams
+Default
+Accuracy: 0.87 (+/- 0.20)
+
+n_estimators: 5
+Accuracy: 0.78 (+/- 0.22)
+
+n_estimators: 20
+Accuracy: 0.94 (+/- 0.18)
+
+n_estimators: 50
+Accuracy: 0.94 (+/- 0.10)
+
+n_estimators: 100
+Accuracy: 0.95 (+/- 0.13)
+
+n_estimators: 200
+Accuracy: 0.94 (+/- 0.13)
+
+max_features: None
+Accuracy: 0.83 (+/- 0.22)
+
+max_features: log2
+Accuracy: 0.84 (+/- 0.18)
+
