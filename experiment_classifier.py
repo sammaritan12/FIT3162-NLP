@@ -44,7 +44,7 @@ def test_classifier_kernels(authors, features_normalized, features_text, languag
     if type(language) is not int:
         raise TypeError("language should an integer")
 
-    if language is not config.ENGLISH or language is not config.SPANISH:
+    if language not in [config.SPANISH, config.ENGLISH]:
         raise ValueError("language should either be config.SPANISH or config.ENGLISH")
 
     curr_time = datetime.now().strftime("%Y-%m-%d_%Hh-%Mm-%Ss-%fms")

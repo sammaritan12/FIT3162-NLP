@@ -80,6 +80,8 @@ def test_linearsvc(train, target, output_file, k_folds):
 
 
 def test_randomforest(train, target, output_file, k_folds):
+    print_write(output_file, 'Classifier: RandomForest')
+    
     clf = RandomForestClassifier()
     print_write(output_file, 'Default')
     output = cv_classifier_score(clf, train, target, k_folds)
