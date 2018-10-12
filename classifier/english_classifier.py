@@ -1,5 +1,4 @@
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.svm import LinearSVC
+from sklearn.ensemble import RandomForestClassifier
 
 def english_classifier(vectorised_normalised_data, data_answers):
     """
@@ -16,8 +15,8 @@ def english_classifier(vectorised_normalised_data, data_answers):
     Where a, b, c are the authors of documents A, B, C and are matched via the index
     """
     # LinearSVC is used as a multiclass, using a one vs all approach
-    svm = LinearSVC(verbose=True)
+    clf = RandomForestClassifier(verbose=True, n_estimators=100)
 
     # Fitting training data with answers
-    svm.fit(vectorised_normalised_data, data_answers)
-    return svm
+    clf.fit(vectorised_normalised_data, data_answers)
+    return clf

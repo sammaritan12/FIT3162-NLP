@@ -66,10 +66,13 @@ if __name__ == '__main__':
         en_training_feature_set = []
 
         # Assembling them such that they look like x
-        for i in range(len(en_authors)):
-            en_training_feature_set.append(
-                [en_avg_sentence_length_feature_set[i]] + en_char_ngram_feature_set[i] \
-                + en_word_ngram_feature_set[i] + en_punctuation_feature_set[i])
+        # for i in range(len(en_authors)):
+        #     en_training_feature_set.append(
+        #         [en_avg_sentence_length_feature_set[i]] + en_char_ngram_feature_set[i] \
+        #         + en_word_ngram_feature_set[i] + en_punctuation_feature_set[i])
+
+        # This test feature set is the most accurate, others worsen the accuracy
+        en_training_feature_set = en_char_ngram_feature_set
 
         en_training_feature_set_normalised = normalize(en_training_feature_set, norm=config.normalization_type)
 
@@ -78,10 +81,13 @@ if __name__ == '__main__':
         sp_training_feature_set = []
 
         # Assembling them such that they look like x
-        for i in range(len(sp_authors)):
-            sp_training_feature_set.append(
-                [sp_avg_sentence_length_feature_set[i]] + sp_char_ngram_feature_set[i] \
-                + sp_word_ngram_feature_set[i] + sp_punctuation_feature_set[i])
+        # for i in range(len(sp_authors)):
+        #     sp_training_feature_set.append(
+        #         [sp_avg_sentence_length_feature_set[i]] + sp_char_ngram_feature_set[i] \
+        #         + sp_word_ngram_feature_set[i] + sp_punctuation_feature_set[i])
+
+        # This test feature set is the most accurate, others worsen the accuracy
+        sp_training_feature_set = sp_char_ngram_feature_set
 
         sp_training_feature_set_normalised = normalize(sp_training_feature_set, norm=config.normalization_type)
 
