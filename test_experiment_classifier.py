@@ -1,5 +1,5 @@
 import unittest
-from experiment_classifier import cv_classifier_score, test_classifier_kernels
+from experiment_classifier import cv_classifier_score, test_classifier_kernels, print_write
 from sklearn.svm import LinearSVC
 
 
@@ -14,6 +14,7 @@ class TestCVClassifierScore(unittest.TestCase):
     def test_positive_k_fold(self):
         self.assertRaises(ValueError, cv_classifier_score, LinearSVC(), [[1]], [1], 0)
         self.assertRaises(ValueError, cv_classifier_score, LinearSVC(), [[1]], [1], -2)
+
 
 class TestTestClassifierKernels(unittest.TestCase):
     def test_types(self):
@@ -45,6 +46,16 @@ class TestTestClassifierKernels(unittest.TestCase):
         self.assertRaises(ValueError, test_classifier_kernels, author, features, fe_text, 2, k)
         self.assertRaises(ValueError, test_classifier_kernels, author, features, fe_text, -2, k)
         self.assertRaises(ValueError, test_classifier_kernels, author, features, fe_text, 500, k)
+
+
+class TestPrintWrite(unittest.TestCase):
+    def test_types(self):
+        not_string = 45
+        not_file = 'test_print_write.txt'
+        a_file = open('test_print_write.txt', 'w')
+        self.assertRaises(TypeError, print_write, not_file, 'hello')
+        self.assertRaises(TypeError, print_write, a_file, not_string)
+
 
 if __name__ == '__main__':
     unittest.main()

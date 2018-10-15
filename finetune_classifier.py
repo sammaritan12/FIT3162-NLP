@@ -1,5 +1,6 @@
 import pickle
 from datetime import datetime
+from io import TextIOWrapper
 from sys import argv
 
 from sklearn.ensemble import RandomForestClassifier
@@ -67,6 +68,10 @@ def test_linearsvc(train, target, output_file, k_folds):
     - output_file, opened file with write permission
     - k_folds, int to test how many k folds for cross validation
     '''
+
+    if type(output_file) is not TextIOWrapper:
+        raise TypeError('output_file must be a file')
+
     print_write(output_file, 'Classifier: LinearSVC')
 
     # Default, no params specified
@@ -102,6 +107,9 @@ def test_randomforest(train, target, output_file, k_folds):
     - output_file, opened file with write permission
     - k_folds, int to test how many k folds for cross validation
     '''
+    if type(output_file) is not TextIOWrapper:
+        raise TypeError('output_file must be a file')
+
     print_write(output_file, 'Classifier: RandomForest')
     
     # Default, no params specified
