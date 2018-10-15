@@ -2,7 +2,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 def spanish_classifier(vectorised_normalised_data, data_answers):
     """
-    Fits normalised data to LinearSVC
+    Fits normalised data to RandomForestClassifier
 
     vectorisedNormalisedData is a 2D list represented as follows
     [[A], [B], ... , [C]]

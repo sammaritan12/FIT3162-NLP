@@ -59,7 +59,7 @@ if __name__ == '__main__':
     for line in file:
         best_classifiers.append([int(i) for i in line.split()])
 
-    output_file = open('./best_english_classifiers/' + lang + '_best_english_classifier_kernel_test_' + curr_time + '.txt', 'a+')
+    output_file = open('./experiment_results/' + lang + '_best_english_classifier_kernel_test_' + curr_time + '.txt', 'a+')
 
     # Heading file and terminal output
     print("TEST: " + lang_name + " Best Classifier Kernels " + curr_time + '\n')
