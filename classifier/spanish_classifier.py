@@ -14,7 +14,7 @@ def spanish_classifier(vectorised_normalised_data, data_answers):
     [a, b, ..., c]
     Where a, b, c are the authors of documents A, B, C and are matched via the index
     """
-    # LinearSVC is used as a multiclass, using a one vs all approach
+    # RandomForestClassifier is used as a multiclass, using a one vs all approach
     clf = RandomForestClassifier(verbose=True, n_estimators=100)
 
     # Fitting training data with answers

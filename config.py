@@ -1,4 +1,5 @@
 # TWEAK CLASSIFIER OPTIONS
+# If tweaking, you MUST run extract_classifier.py again
 char_ngram_length = 4  # length of character ngrams
 word_ngram_length = 2  # length of word ngrams
 ngram_common_words = 100  # how many of the most common ngrams to choose as feature sets  
@@ -15,7 +16,7 @@ sp_processed_text_path = './processed_texts/spanish'
 en_best_classifier_text_path = './best_english_classifiers/best_classifiers.txt'
 sp_best_classifier_text_path = './best_spanish_classifiers/best_classifiers.txt'
 
-# Paths for english classifiers and extracted char/word ngrams
+# Paths for english classifiers and english serialised objects
 en_classifier_path = './serialised_objects/en_classifier.pkl'
 en_authors_path = './serialised_objects/en_authors.pkl'
 en_training_char_ngrams_path = './serialised_objects/en_training_char_ngrams.pkl'
@@ -27,7 +28,7 @@ en_punctuation_feature_set_path = './serialised_objects/en_punctuation_feature_s
 en_training_punctuation_path = './serialised_objects/en_training_punctuation.pkl'
 en_k_folds = 10
 
-# Paths for english classifiers and extracted char/word ngrams
+# Paths for spanish classifiers and and spanish serialised objects
 sp_classifier_path = './serialised_objects/sp_classifier.pkl'
 sp_authors_path = './serialised_objects/sp_authors.pkl'
 sp_training_char_ngrams_path = './serialised_objects/sp_training_char_ngrams.pkl'
@@ -38,6 +39,9 @@ sp_avg_sentence_length_feature_set_path = './serialised_objects/sp_avg_sentence_
 sp_punctuation_feature_set_path = './serialised_objects/sp_punctuation_feature_set.pkl'
 sp_training_punctuation_path = './serialised_objects/sp_training_punctuation.pkl'
 sp_k_folds = 8
+
+# Other paths
+experiment_results_path = './experiment_results/'
 
 # Constants
 SPANISH = -1

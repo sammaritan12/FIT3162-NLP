@@ -8,19 +8,19 @@ I'm a Final Year Get Me Out of Here
 ## How To Install
 
 - Python 3.x must be used
-- If using system with Python 2.x and Python 3.x use `python3` command instead of `python`
+- If using a unix system with Python 2.x and Python 3.x use `python3` command instead of `python`
 
 ### Installing Sci-kit Learn and NLTK
 
 Go to your commandline/terminal and type the following command:
 
 ```bash
-pip install -U numpy scipy scikit-learn nltk pytest
+pip install -U numpy scipy scikit-learn nltk
 ```
 
 If you are using a unix system, use `pip3` command
 
-If `pip` is not installed no your unix system, type the following into your terminal:
+If `pip` is not installed on your unix system, type the following into your terminal:
 
 - Ubuntu/Debian:
 

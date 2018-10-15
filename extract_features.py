@@ -19,7 +19,11 @@ def file_extraction(language):
     
     Also returns authors, in the same order of texts
     [Author of A, Author of B, ... , Author C]
+
+    Params:
+    - language, either config.ENGLISH or config.SPANISH
     """
+    # Value checking
     if language not in [config.ENGLISH, config.SPANISH]:
         raise ValueError("language must either be config.ENGLISH or config.SPANISH")
 
@@ -53,18 +57,16 @@ def feature_extraction(processed_texts, language):
     Extracts language features from processed texts
     - processed_texts is a list of strings [A, B, ... , C]
 
-    Join features such that there consists the following list:
-    [Text Features A, Text Features B, ... , Text Features C]
-    Text Features: [Average Sentence Length, 
-                    Punctuation 1 Freq, ... , Punctuation 14 Freq,
-                    POS 1 Freq, ... , POS 8 Freq,
-                    Most Common N-Gram Freq, ... , 1000th Most Common N-Gram Freq]
-    
-    Returns:
-    - training_feature_set , which is list above
-    - training_word_ngrams , word ngrams used to assemble word ngram frequencies in training feature set
-    - training_char_ngrams , character ngrams used to assemble character ngram frequencies in training feature set
+    Join features such that it returns the following lists:
+    - char_ngram_feature_set, feature set for character n-grams
+    - training_char_ngrams, char n-grams used to create the feature set
+    - word_ngram_feature_set, feature set for word n-grams
+    - training_word_ngrams, word n-grams used to create the feature set
+    - avg_sentence_length_feature_set, feature set for average sentence length
+    - training_punctuation, punctuation used to create the feature set
+    - punctuation_feature_set, feature set for punctuation frequency
     """
+    # Value and type checking
     if language not in [config.ENGLISH, config.SPANISH]:
         raise ValueError("language must either be config.ENGLISH or config.SPANISH")
 
@@ -74,6 +76,7 @@ def feature_extraction(processed_texts, language):
     if not all(isinstance(x, str) for x in processed_texts):
         raise ValueError("words must be a list of strings")
 
+    # Extract features from the language specified
     if language == config.ENGLISH:
         lang_name = config.EN_NAME
     elif language == config.SPANISH:
@@ -83,6 +86,7 @@ def feature_extraction(processed_texts, language):
 
     curr_time = time.time()
 
+    # Tokenise the words
     tokenized_words = [word_tokenize(i) for i in processed_texts]
 
     print(lang_name, "Word Tokenization Time:", time.time() - curr_time)
@@ -130,9 +134,11 @@ def feature_extraction(processed_texts, language):
 
 
 if __name__ == "__main__":
-    # THIS FILE WILL IMPORT THE TEXTS AND EXTRACT THE FEATURES, THEN SAVE THEM AS PICKLES
-    # First argument specifies whether to extract english, spanish or Both
-    # If empty, extract both
+    '''
+    THIS FILE WILL IMPORT THE TEXTS AND EXTRACT THE FEATURES, THEN SAVE THEM AS SERIALISED OBJECTS
+    python extract_features.py <english/spanish>
+    If no language is specified, it is assumed to extract both languages
+    '''
 
     t1 = time.time()
 
@@ -142,6 +148,7 @@ if __name__ == "__main__":
     # -1 == spanish 
     language = config.BOTH
 
+    # Checking the language
     if len(argv) > 1:
         if argv[1].lower() == 'spanish':
             language = config.SPANISH
@@ -153,7 +160,6 @@ if __name__ == "__main__":
             print("Please choose a language as argument, either 'english' 'spanish' or 'both' ")
 
     # FILE EXTRACTION #
-
 
     # Import processed gutenberg texts from folder and place as a list [A, B, ... , C]
     if language >= 0:

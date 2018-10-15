@@ -9,13 +9,16 @@ from classifier.english_classifier import english_classifier
 from classifier.spanish_classifier import spanish_classifier
 
 if __name__ == '__main__':
+    '''
+    Creates English, Spanish or both classifiers using the extracted features (extract_feature.py) found in directory placed in config.py
+    Can be run as:
+    python create_classifier.py <spanish/english>
+    If no language is specified, it is assumed both will be created
+    '''
     t1 = time.time()
-
-    # 0 == both
-    # 1 == english
-    # -1 == spanish
     language = config.BOTH
 
+    # Check what language is to be used
     if len(argv) > 1:
         if argv[1].lower() == config.EN_NAME.lower():
             language = config.ENGLISH
@@ -31,6 +34,8 @@ if __name__ == '__main__':
 
         with open(config.en_char_ngram_feature_set_path, 'rb') as fid:
             en_char_ngram_feature_set = pickle.load(fid)
+
+        # Features below can be commented as they are not necessary for most accurate classifier
 
         with open(config.en_word_ngram_feature_set_path, 'rb') as fid:
             en_word_ngram_feature_set = pickle.load(fid)
@@ -49,6 +54,8 @@ if __name__ == '__main__':
         with open(config.sp_char_ngram_feature_set_path, 'rb') as fid:
             sp_char_ngram_feature_set = pickle.load(fid)
 
+        # Features below can be commented as they are not necessary for most accurate classifier
+
         with open(config.sp_word_ngram_feature_set_path, 'rb') as fid:
             sp_word_ngram_feature_set = pickle.load(fid)
 
@@ -65,6 +72,7 @@ if __name__ == '__main__':
     if language >= 0:
         en_training_feature_set = []
 
+        # Uncomment this if desired to test other classifiers
         # Assembling them such that they look like x
         # for i in range(len(en_authors)):
         #     en_training_feature_set.append(
@@ -80,6 +88,7 @@ if __name__ == '__main__':
     if language <= 0:
         sp_training_feature_set = []
 
+        # Uncomment this if desired to test other classifiers
         # Assembling them such that they look like x
         # for i in range(len(sp_authors)):
         #     sp_training_feature_set.append(
@@ -113,6 +122,7 @@ if __name__ == '__main__':
 
     print("classifier Fit and File Saving Time:", time.time() - t0)
 
+    # Comment success
     if language >= 0:
         print(config.EN_NAME, "Classifier created in", time.time() - t1, "seconds.")
     if language <= 0:

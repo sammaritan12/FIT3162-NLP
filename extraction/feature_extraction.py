@@ -1,5 +1,6 @@
-from nltk import word_tokenize, sent_tokenize, FreqDist
 from math import ceil
+
+from nltk import FreqDist, sent_tokenize, word_tokenize
 
 # Assumptions:
 # - clean preprocessed data is a text file containing text only
@@ -8,6 +9,7 @@ from math import ceil
 def merge_freqdists(freq_dists):
     """
     Merge multiple frequency lists together
+    Params:
     - freq_dists is represented as [FreqDist, FreqDist, ... , FreqDist]
 
     Returns
@@ -17,6 +19,7 @@ def merge_freqdists(freq_dists):
     if type(freq_dists) is not list:
         raise TypeError("freq_dists must be a list of FreqDists")
 
+    # Basically add together freqdists
     merged_freqs = FreqDist()
     if len(freq_dists) > 1:
         for i in range(len(freq_dists)):
@@ -32,6 +35,7 @@ def merge_freqdists(freq_dists):
 def freqdist_selection(text_distributions, n):
     """
     Selects the most common n words from text_distributions
+    Params:
     - text_distributions, list of FreqDists [A, B, ... , C]
     - n, positive integer in 
 
@@ -39,7 +43,7 @@ def freqdist_selection(text_distributions, n):
     - item , list containing actual values [A, B, ... , C]
     - item_counts , list containing counts of items [A count, B count, ... , C count]
     """
-    # tpye and value checking
+    # type and value checking
     if type(text_distributions) is not list:
         raise TypeError("text_distributions must be a list of FreqDists")
 
@@ -77,6 +81,9 @@ def freqdist_selection(text_distributions, n):
 def freqdist_test_selection(distribution, items):
     """
     Selects item counts from distribution and places into a simple list
+    Params:
+    - distribution, FreqDist object
+    - items, list of strings to check in the distribution param
     """
     # type and value checking
     if type(distribution) is not FreqDist:
@@ -94,6 +101,7 @@ def freqdist_test_selection(distribution, items):
 def char_ngram(length, words):
     """
     Given a list of strings, convert to character ngrams, where length is length of ngram
+    Params:
     - words is represented as [a, b, ..., c.]
     - where a, b, c are whole words
     - length is the length of the character n-gram required
@@ -129,6 +137,7 @@ def char_ngram(length, words):
 def word_ngram(length, words):
     """
     Given a list of strings, convert to word ngrams, where length is length of ngram
+    Params:
     - words is represented as [a, b, ..., c.]
     - where a, b, c are whole words
     - length is the length of the word n-gram required
@@ -164,6 +173,7 @@ def word_ngram(length, words):
 def avg_sentence_length(text, words):
     """
     Returns the median sentence length of a text
+    Params:
     - text is represented as a string 'text'
     - words, tokenised list of strings within the text
     """
@@ -187,6 +197,11 @@ def avg_sentence_length(text, words):
 
 
 def punctuation_frequency(tokenised_words):
+    """
+    Returns the set of punctuation used in tokenised_words
+    Params:
+    - tokenised_words, list of strings of all words tokenised
+    """
     # type and value checking
     if type(tokenised_words) is not list:
         raise TypeError('Input must be a list of strings')
@@ -196,6 +211,7 @@ def punctuation_frequency(tokenised_words):
     # initialise word count list and words
     result = []
 
+    # Add punctuation to result
     for word in tokenised_words:
         if type(word) is not str:
             raise ValueError('Each list item must be a string')

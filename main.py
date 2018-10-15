@@ -12,10 +12,14 @@ from extraction.feature_extraction import (avg_sentence_length, char_ngram,
 from extraction.file_extraction import filename_to_text, list_filenames
 
 # MAIN RUN FILE
-# This is the main run file for the project, will be command line for now
 if __name__ == "__main__":
-
-    # UNCOMMENT WHEN READY TO USE SYSTEM ARGUMENTS
+    '''
+    This file is run if you want to test out of sample processed Gutenberg texts on the classifier needed
+    Make sure that the features extracted within the text here match the features trained on in create_classifier.py
+    The file can be run as:
+    main.py <processed_gutenberg_text.txt> <english/spanish>
+    If no language specified, assumed it is English
+    '''
     english = True
     
     # First argument will be text file, else quit
@@ -66,15 +70,6 @@ if __name__ == "__main__":
         with open(config.sp_training_punctuation_path, 'rb') as fid:
             training_punctuation = pickle.load(fid)
 
-    # # Exactly the same as Text A in training data
-    # text = '''There were a king with a large jaw and a queen with a plain face, on the
-    # throne of England; there were a king with a large jaw and a queen with
-    # a fair face, on the throne of France. In both countries it was clearer
-    # than crystal to the lords of the State preserves of loaves and fishes,
-    # that things in general were settled for ever.'''
-
-    # TODO process text file to feature set
-
     # ngram feature set extraction
     tokenized_word = word_tokenize(text)
 
@@ -93,13 +88,14 @@ if __name__ == "__main__":
     punctuation_feature_set = \
         freqdist_test_selection(FreqDist(punctuation_frequency(tokenized_word)), training_punctuation)
 
+    # Uncomment this if planning to test all features sets
     # Aggregated feature set
     # test_feature_set = char_ngrams_feature_set + word_ngrams_feature_set +\
     #     [avg_sentence_length_feature_set] + punctuation_feature_set
     
+    # Most accurate is characfter tetragrams by itself
     test_feature_set = char_ngrams_feature_set
 
-    print(len(test_feature_set))
     # Normalise feature set
     test_feature_set_normalised = normalize([test_feature_set], norm=config.normalization_type)
 
