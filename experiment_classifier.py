@@ -203,7 +203,7 @@ if __name__ == '__main__':
                 for i in range(len(en_authors)):
                     curr_feature = []
                     for k in range(len(subset)):
-                        if subset[k][1][:3] == '- Average Sentence Length':
+                        if subset[k][1] == '- Average Sentence Length\n':
                             curr_feature.append(subset[k][0][i])
                         else:
                             curr_feature.extend(subset[k][0][i])
@@ -237,7 +237,7 @@ if __name__ == '__main__':
                 for i in range(len(sp_authors)):
                     curr_feature = []
                     for k in range(len(subset)):
-                        if subset[k][1][:3] == '- Average Sentence Length':
+                        if subset[k][1] == '- Average Sentence Length\n':
                             curr_feature.append(subset[k][0][i])
                         else:
                             curr_feature.extend(subset[k][0][i])

@@ -1,0 +1,85 @@
+TEST: English Best Classifier Kernels 2018-10-19_12h-25m-58s-404610ms
+
+- Character N-Grams, Amount: 4, 100
+Gaussian Naive Bayes Accuracy: 0.87 (+/- 0.16)
+
+- Character N-Grams, Amount: 4, 100
+Multi-Layer Perceptron Accuracy: 0.81 (+/- 0.26)
+
+- Character N-Grams, Amount: 4, 100
+Random Forest Accuracy: 0.80 (+/- 0.18)
+
+- Word N-Grams, Amount: 2, 100
+Linear SVC Accuracy: 0.86 (+/- 0.24)
+
+- Word N-Grams, Amount: 2, 100
+Multi-Layer Perceptron Accuracy: 0.87 (+/- 0.27)
+
+- Character N-Grams, Amount: 4, 100
+- Word N-Grams, Amount: 2, 100
+Gaussian Naive Bayes Accuracy: 0.88 (+/- 0.17)
+
+- Character N-Grams, Amount: 4, 100
+- Word N-Grams, Amount: 2, 100
+Multi-Layer Perceptron Accuracy: 0.82 (+/- 0.27)
+
+- Character N-Grams, Amount: 4, 100
+- Word N-Grams, Amount: 2, 100
+Random Forest Accuracy: 0.89 (+/- 0.17)
+
+- Character N-Grams, Amount: 4, 100
+- Average Sentence Length
+Gaussian Naive Bayes Accuracy: 0.87 (+/- 0.16)
+
+- Character N-Grams, Amount: 4, 100
+- Average Sentence Length
+Random Forest Accuracy: 0.86 (+/- 0.22)
+
+- Character N-Grams, Amount: 4, 100
+- Punctuation Frequency
+Random Forest Accuracy: 0.85 (+/- 0.22)
+
+- Word N-Grams, Amount: 2, 100
+- Average Sentence Length
+SVC with Linear Kernel Accuracy: 0.67 (+/- 0.34)
+
+- Word N-Grams, Amount: 2, 100
+- Average Sentence Length
+Random Forest Accuracy: 0.85 (+/- 0.22)
+
+- Character N-Grams, Amount: 4, 100
+- Word N-Grams, Amount: 2, 100
+- Average Sentence Length
+Gaussian Naive Bayes Accuracy: 0.89 (+/- 0.17)
+
+- Character N-Grams, Amount: 4, 100
+- Word N-Grams, Amount: 2, 100
+- Average Sentence Length
+Multi-Layer Perceptron Accuracy: 0.84 (+/- 0.27)
+
+- Character N-Grams, Amount: 4, 100
+- Word N-Grams, Amount: 2, 100
+- Average Sentence Length
+Random Forest Accuracy: 0.90 (+/- 0.13)
+
+- Character N-Grams, Amount: 4, 100
+- Word N-Grams, Amount: 2, 100
+- Punctuation Frequency
+Random Forest Accuracy: 0.86 (+/- 0.22)
+
+- Character N-Grams, Amount: 4, 100
+- Average Sentence Length
+- Punctuation Frequency
+Random Forest Accuracy: 0.90 (+/- 0.18)
+
+- Word N-Grams, Amount: 2, 100
+- Average Sentence Length
+- Punctuation Frequency
+Random Forest Accuracy: 0.81 (+/- 0.21)
+
+- Character N-Grams, Amount: 4, 100
+- Word N-Grams, Amount: 2, 100
+- Average Sentence Length
+- Punctuation Frequency
+Random Forest Accuracy: 0.88 (+/- 0.17)
+

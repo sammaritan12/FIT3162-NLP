@@ -13,8 +13,8 @@ en_processed_text_path = './processed_texts/english'
 sp_processed_text_path = './processed_texts/spanish'
 
 # Paths for best classifiers for further testing
-en_best_classifier_text_path = './best_english_classifiers/best_classifiers.txt'
-sp_best_classifier_text_path = './best_spanish_classifiers/best_classifiers.txt'
+en_best_classifier_text_path = './classifier/best_classifiers.txt'
+sp_best_classifier_text_path = './classifier/best_classifiers.txt'
 
 # Paths for english classifiers and english serialised objects
 en_classifier_path = './serialised_objects/en_classifier.pkl'
